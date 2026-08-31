@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en" x-data="app()" :class="{'dark':dark}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FLYHISOCIAL - Enterprise IT Services & Custom Solutions.">
+  <meta name="keywords" content="IT Services, Cloud, ERP, SAP, UI/UX, Web Development, Event Management, Marine Consultancy">
+  <meta name="author" content="FLYHISOCIAL">
+  <link rel="shortcut icon" href="FlyHi Social Logo-selection-5.png" type="image/x-icon">
+  <title>FLYHISOCIAL | Corporate IT Services & Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { display: ['PT Sans','sans-serif'], body: ['DM Sans','sans-serif'] },
+          colors: { accent: '#FF6B2B', 'accent-light': '#FF8F5C' }
+        }
+      }
+    }
+  </script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{font-family:'DM Sans',sans-serif}
+    h1,h2,h3,h4,h5,h6{font-family:'PT Sans',sans-serif}
+    body{transition:background-color .3s,color .3s}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.35; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E")}
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-track{background:transparent}
+    ::-webkit-scrollbar-thumb{background:#FF6B2B;border-radius:99px}
+    .reveal{visibility:hidden;} /* Handled by GSAP */
+    .nl{position:relative}
+    .nl::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:currentColor;transition:width .22s cubic-bezier(.4,0,.2,1)}
+    .nl:hover::after,.nl.on::after{width:100%}
+    .shimmer{position:relative;overflow:hidden}
+    .shimmer::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:rgba(255,255,255,.18);transform:skewX(-20deg);transition:left .4s cubic-bezier(.4,0,.2,1)}
+    .shimmer:hover::after{left:160%}
+    .pf{overflow:hidden;background:#e4e4e7}
+    .pf img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+    .pf:hover img{transform:scale(1.03)}
+    .card-h{transition:border-color .18s}
+    [x-cloak]{display:none!important}
+    html.lenis { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    .lenis.lenis-stopped { overflow: hidden; }
+    .lenis.lenis-scrolling iframe { pointer-events: none; }
+  </style>
+</head>
+<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased">
+  <div id="tsparticles" class="fixed inset-0 z-0 pointer-events-none"></div>
+  <header class="fixed inset-x-0 top-0 z-50 transition-all duration-300 bg-zinc-950 border-b border-zinc-900">
+    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
+      <a href="index.html" class="flex items-center gap-3 relative z-10 select-none">
+        <svg class="h-10 w-auto" viewBox="0 0 250 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="56" y="0" width="24" height="24" fill="#E52D12"/>
+          <rect x="28" y="28" width="24" height="24" fill="#FFFFFF"/>
+          <rect x="56" y="28" width="24" height="24" fill="#FFFFFF"/>
+          <rect x="0" y="56" width="24" height="24" fill="#FFFFFF"/>
+          <rect x="28" y="56" width="24" height="24" fill="#FFFFFF"/>
+          <text x="100" y="34" fill="#FFFFFF" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-weight="700" font-size="40" letter-spacing="-0.01em">FLYHi</text>
+          <text x="100" y="74" fill="#FFFFFF" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-weight="600" font-size="25" letter-spacing="0.08em">SOCIAL</text>
+        </svg>
+      </a>
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium" role="list">
+        <li><a href="#hero" class="nl text-zinc-300 hover:text-white transition-colors">Home</a></li>
+        <li><a href="#services" class="nl text-zinc-300 hover:text-white transition-colors">Services</a></li>
+        <li><a href="#about" class="nl text-zinc-300 hover:text-white transition-colors">About Us</a></li>
+        <li><a href="#contact" class="nl text-zinc-300 hover:text-white transition-colors">Contact Us</a></li>
+      </ul>
+      <div class="flex items-center gap-3">
+        <button @click="dark=!dark" class="w-9 h-9 flex items-center justify-center rounded-full border border-zinc-800 text-white hover:bg-zinc-900 transition-colors" :aria-label="dark?'Light mode':'Dark mode'">
+          <svg x-show="!dark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <svg x-show="dark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+        </button>
+        <a href="#contact" class="hidden md:inline-flex items-center gap-2 shimmer bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors">
+          Get Started <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <button @click="mm=!mm" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-zinc-800 text-white" :aria-expanded="mm" aria-label="Toggle menu">
+          <svg x-show="!mm" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg x-show="mm" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </nav>
+    <div x-show="mm" x-cloak x-transition class="md:hidden bg-zinc-950 border-t border-zinc-900 px-6 py-5 space-y-4">
+      <a href="#hero" @click="mm=false" class="block text-zinc-300 hover:text-white">Home</a>
+      <a href="#services" @click="mm=false" class="block text-zinc-300 hover:text-white">Our Services</a>
+      <a href="#about" @click="mm=false" class="block text-zinc-300 hover:text-white">About</a>
+      <a href="#contact" @click="mm=false" class="block text-zinc-300 hover:text-white">Contact Us</a>
+    </div>
+  </header>
+  <main class="relative z-10">
+    <section id="hero" class="relative w-full overflow-hidden pt-32 pb-20 md:pt-40 md:pb-24">
+      <div class="absolute top-1/4 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="relative z-10 max-w-6xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h1 class="reveal font-display font-bold text-5xl md:text-6xl lg:text-7xl leading-tight text-zinc-900 dark:text-white mb-6">
+            We are Your Technology <span class="text-accent">Partners</span>
+          </h1>
+          <p class="reveal text-lg text-zinc-500 dark:text-zinc-400 font-light leading-relaxed mb-8">
+            We provide high-availability Cloud infrastructure, tailored ERP solutions, comprehensive web ecosystems, data-driven marketing frameworks, marine consultancy, and custom event management solutions.
+          </p>
+          <div class="reveal flex gap-4">
+            <a href="#services" class="shimmer bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-medium px-7 py-3.5 rounded-full text-sm">Explore Capabilities</a>
+            <a href="#contact" class="border border-zinc-300 dark:border-zinc-700 px-7 py-3.5 rounded-full text-sm font-medium">Submit Inquiry</a>
+          </div>
+        </div>
+        <div class="reveal flex justify-center md:justify-end">
+          <div class="hero-image-wrapper relative w-80 h-80 lg:w-96 lg:h-96 pf rounded-3xl shadow-lg">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="FLYHISOCIAL Corporate Headquarters Building">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="services" class="py-24 bg-zinc-50 dark:bg-zinc-900/40">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="mb-14">
+          <h2 class="reveal font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Our Services</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2" class="reveal card-h bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 flex flex-col justify-between group">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-950/50 flex items-center justify-center mb-5 text-accent">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                </svg>
+              </div>
+              <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Cloud Computing & AI</h3>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-6">Scalable cloud hosting, smart automation, and seamless AI integrations built for performance and security.</p>
+            </div>
+            <div>
+              <a href="cloud-computing.html" class="inline-flex items-center gap-1 text-sm font-semibold text-accent hover:text-accent-light transition-colors group-hover:underline">
+                View more &rarr;
+              </a>
+            </div>
+          </div>
+          <div data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2" class="reveal card-h bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 flex flex-col justify-between group">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-950/50 flex items-center justify-center mb-5 text-accent">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+              </div>
+              <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">ERP Solutions</h3>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-6">Aligning enterprise core functions, supply chain, financial tracking databases, and customized configuration modules. </p>
+            </div>
+            <div>
+              <a href="erp-consulting.html" class="inline-flex items-center gap-1 text-sm font-semibold text-accent hover:text-accent-light transition-colors group-hover:underline">
+                View more &rarr;
+              </a>
+            </div>
+          </div>
+          <div data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2" class="reveal card-h bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 flex flex-col justify-between group">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-950/50 flex items-center justify-center mb-5 text-accent">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </div>
+              <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">App &amp; Web Development</h3>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-6">Production-ready system architectures, e-commerce engines, and high-performance framework integration. </p>
+            </div>
+            <div>
+              <a href="app-web-development.html" class="inline-flex items-center gap-1 text-sm font-semibold text-accent hover:text-accent-light transition-colors group-hover:underline">
+                View more &rarr;
+              </a>
+            </div>
+          </div>
+          <div data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2" class="reveal card-h bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 flex flex-col justify-between group">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-950/50 flex items-center justify-center mb-5 text-accent">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+                </svg>
+              </div>
+              <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Digital Marketing</h3>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-6">Targeted multi-channel ad optimizations, structured search visibility enhancements, and analytical metric metrics tracking. </p>
+            </div>
+            <div>
+              <a href="digital-marketing.html" class="inline-flex items-center gap-1 text-sm font-semibold text-accent hover:text-accent-light transition-colors group-hover:underline">
+                View more &rarr;
+              </a>
+            </div>
+          </div>
+          <div data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2" class="reveal card-h bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 flex flex-col justify-between group">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-950/50 flex items-center justify-center mb-5 text-accent">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Event Management</h3>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-6">Coordinating tech summits, brand launches, and smooth physical-to-hybrid streaming operations. </p>
+            </div>
+            <div>
+              <a href="event-management.html" class="inline-flex items-center gap-1 text-sm font-semibold text-accent hover:text-accent-light transition-colors group-hover:underline">
+                View more &rarr;
+              </a>
+            </div>
+          </div>
+          <div data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2" class="reveal card-h bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 flex flex-col justify-between group">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-950/50 flex items-center justify-center mb-5 text-accent">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="5" r="3" />
+                  <line x1="12" y1="22" x2="12" y2="8" />
+                  <path d="M5 12H2a10 10 0 0 0 20 0h-3" />
+                </svg>
+              </div>
+              <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Marine Consultancy</h3>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-6">Naval engineering, maritime safety audits, vessel surveys, and specialized technical operations support.</p>
+            </div>
+            <div>
+              <a href="marine-consultancy.html" class="inline-flex items-center gap-1 text-sm font-semibold text-accent hover:text-accent-light transition-colors group-hover:underline">
+                View more &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="about" class="py-24 bg-zinc-50 dark:bg-zinc-900/40">
+      <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+          <h2 class="font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white mb-6">We Simplify Complex Systems Infrastructure</h2>
+          <div class="space-y-4 font-light text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            <p>
+              Located in Bhubaneswar, Odisha, <strong>FLYHISOCIAL</strong> functions as a dedicated engineering group focused on resolving multi-tier system integration issues. We bridge organizational needs with robust code design. 
+            </p>
+            <p>
+              Our internal structure minimizes operational ambiguity. Each distinct department operates under specialized team leads with targeted technical background paths to guarantee immediate technical assistance. 
+            </p>
+          </div>
+        </div>
+        <div class="reveal flex justify-center md:justify-end">
+          <div class="relative w-full h-80 md:h-[420px] pf rounded-3xl shadow-sm">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="FLYHISOCIAL Premium Corporate Studio Environment">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="py-24 max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="bg-zinc-900 rounded-3xl p-6 sm:p-10 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div class="lg:col-span-5 text-center lg:text-left">
+          <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white mb-4">Contact Us</h2>
+          <p class="text-zinc-400 text-sm sm:text-base leading-relaxed max-w-md mx-auto lg:mx-0">
+            Please fill the form for our respective team to contact you. 
+          </p>
+        </div>
+        <div class="lg:col-span-7 w-full">
+          <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+            <input type="hidden" name="access_key" value="fd55cef8-5384-4223-b3b6-ad18cc618f08">
+            <input type="hidden" name="subject" value="New Corporate Project Brief - FLYHISOCIAL Desk">
+            <input type="hidden" name="from_name" value="FLYHISOCIAL Portal">
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <input type="text" name="Name" placeholder="Name" required class="w-full bg-zinc-800 border border-zinc-700 text-white text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-accent">
+              <input type="email" name="Email Address" placeholder="Email" required class="w-full bg-zinc-800 border border-zinc-700 text-white text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-accent">
+            </div>
+            <select name="Target Department" class="w-full bg-zinc-800 border border-zinc-700 text-zinc-400 text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-accent">
+              <option value="Cloud Computing Division">Cloud Computing & AI</option>
+              <option value="ERP Solutions">ERP Solutions</option>
+              <option value="App &amp; Web Systems Infrastructure">App &amp; Web Systems Solutions</option>
+              <option value="Digital Marketing Execution">Digital Marketing</option>
+              <option value="Event Management Division">Event Management</option>
+              <option value="Marine Consultancy Division">Marine Consultancy</option>
+            </select>
+            <textarea name="Project Operational Parameters" rows="4" placeholder="Describe here..." required class="w-full bg-zinc-800 border border-zinc-700 text-white text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-accent resize-none"></textarea>
+            <button type="submit" class="shimmer w-full bg-accent text-white font-bold text-sm py-3.5 rounded-xl transition-colors">Submit</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="relative z-10 bg-zinc-950 text-zinc-400 border-t border-zinc-900 pt-16 pb-8">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+      <div>
+        <a href="index.html" class="flex items-center gap-3 mb-4 select-none">
+          <svg class="h-10 w-auto" viewBox="0 0 250 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="56" y="0" width="24" height="24" fill="#E52D12"/>
+            <rect x="28" y="28" width="24" height="24" fill="#FFFFFF"/>
+            <rect x="56" y="28" width="24" height="24" fill="#FFFFFF"/>
+            <rect x="0" y="56" width="24" height="24" fill="#FFFFFF"/>
+            <rect x="28" y="56" width="24" height="24" fill="#FFFFFF"/>
+            <text x="100" y="34" fill="#FFFFFF" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-weight="700" font-size="40" letter-spacing="-0.01em">FLYHi</text>
+            <text x="100" y="74" fill="#FFFFFF" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-weight="600" font-size="25" letter-spacing="0.08em">SOCIAL</text>
+          </svg>
+        </a>
+        <p class="text-sm leading-relaxed">System implementation specialists accelerating enterprise business solutions. </p>
+      </div>
+      <div>
+        <h2 class="text-white font-semibold mb-4 text-sm uppercase">Services</h2>
+        <ul class="space-y-2 text-sm">
+          <li><a href="cloud-computing.html" class="hover:text-white transition-colors">Cloud Computing & AI</a></li>
+          <li><a href="erp-consulting.html" class="hover:text-white transition-colors">ERP Solutions</a></li>
+          <li><a href="app-web-development.html" class="hover:text-white transition-colors">App & Web-development</a></li>
+          <li><a href="digital-marketing.html" class="hover:text-white transition-colors">Digital-Marketing</a></li>
+          <li><a href="event-management.html" class="hover:text-white transition-colors">Event Management</a></li>
+          <li><a href="marine-consultancy.html" class="hover:text-white transition-colors">Marine Consultancy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="text-white font-semibold mb-4 text-sm uppercase">Company</h2>
+        <ul class="space-y-2 text-sm">
+          <li><a href="index.html#hero" class="hover:text-white transition-colors">Corporate Home</a></li>
+          <li><a href="index.html#about" class="hover:text-white transition-colors">About Us</a></li>
+          <li><a href="index.html#contact" class="hover:text-white transition-colors">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="text-white font-semibold mb-4 text-sm uppercase">Address</h2>
+        <p class="text-sm text-zinc-500 leading-relaxed">Plot No. 4775/2, BJB Nagar, Bhubaneswar, Odisha 751014</p>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto px-6 pt-8 border-t border-zinc-900 text-center md:flex md:justify-between text-xs text-zinc-500">
+      <p>&copy; 2026 FLYHISOCIAL. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+    function app() {
+      return {
+        dark: false,
+        mm: false,
+        init() {
+          this.dark = localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          this.$watch('dark', v => localStorage.setItem('theme', v ? 'dark' : 'light'));
+          
+          // Lenis Smooth Scroll
+          const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+          });
+          function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+          }
+          requestAnimationFrame(raf);
+
+          document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              lenis.scrollTo(this.getAttribute('href'));
+              if(document.querySelector('[x-data]').__x) {
+                document.querySelector('[x-data]').__x.$data.mm = false;
+              }
+            });
+          });
+
+          // GSAP
+          gsap.registerPlugin(ScrollTrigger);
+
+          // Hero Parallax & Float
+          gsap.to('.hero-image-wrapper', {
+            y: 80, ease: "none",
+            scrollTrigger: { trigger: "#hero", start: "top top", end: "bottom top", scrub: true }
+          });
+          gsap.to('.hero-image-wrapper img', { y: -15, duration: 2, yoyo: true, repeat: -1, ease: "sine.inOut" });
+
+          // Reveal Animations (Scroll down to reveal)
+          gsap.utils.toArray('.reveal').forEach(elem => {
+            gsap.fromTo(elem, 
+              { autoAlpha: 0, y: 50 }, 
+              { autoAlpha: 1, y: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: elem, start: "top 85%" } }
+            );
+          });
+
+          // tsParticles (Antigravity Parallax Dust Effect)
+          tsParticles.load("tsparticles", {
+            fpsLimit: 60,
+            interactivity: {
+              detectsOn: "window",
+              events: { 
+                onHover: { 
+                  enable: true, 
+                  mode: "bubble",
+                  parallax: { enable: true, force: 120, smooth: 10 } 
+                }, 
+                resize: true 
+              },
+              modes: {
+                bubble: { distance: 150, size: 4, duration: 2, opacity: 1 }
+              }
+            },
+            particles: {
+              color: { value: "#FF6B2B" },
+              links: { enable: false },
+              move: { enable: true, speed: 0.3, direction: "none", random: true, straight: false, outModes: "out" },
+              number: { density: { enable: true, area: 800 }, value: 200 },
+              opacity: { value: { min: 0.1, max: 0.7 } },
+              size: { value: { min: 0.5, max: 2.5 } }
+            },
+            detectRetina: true,
+            fullScreen: { enable: false, zIndex: 0 }
+          });
+        }
+      }
+    }
+  </script>
+</body>
+</html>
