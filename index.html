@@ -35,9 +35,41 @@
     /* Preloader */
     #preloader { transform-origin: top; }
     
-    /* Custom Cursor */
-    #cursor { transform: translate(-50%, -50%); }
-    #cursor-follower { transform: translate(-50%, -50%); }
+    /* Sleek Professional Cursor */
+    #cursor { 
+        position: fixed;
+        top: 0; left: 0;
+        width: 8px; height: 8px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10000;
+        transform: translate(-50%, -50%); 
+        transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                    height 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                    background-color 0.3s ease, 
+                    border 0.3s ease;
+        mix-blend-mode: difference;
+    }
+    #cursor.hover-active {
+        width: 48px;
+        height: 48px;
+        background-color: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        mix-blend-mode: normal;
+    }
+
+    /* Floating Animations for Hero Graphics */
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+    @keyframes float-delayed {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-12px); }
+    }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-float-delayed { animation: float-delayed 5s ease-in-out infinite 1s; }
 
     /* Glassmorphism Cards */
     .glass-card {
@@ -70,9 +102,8 @@
      </div>
   </div>
 
-  <!-- Magnetic Custom Cursor -->
-  <div id="cursor" class="fixed top-0 left-0 w-2 h-2 bg-white rounded-full pointer-events-none z-[10000] mix-blend-difference"></div>
-  <div id="cursor-follower" class="fixed top-0 left-0 w-10 h-10 border border-white/40 rounded-full pointer-events-none z-[10000] flex items-center justify-center"></div>
+  <!-- Sleek Professional Cursor -->
+  <div id="cursor"></div>
 
   <!-- Pure Parallax Starfield -->
   <div id="tsparticles" class="fixed inset-0 z-0 pointer-events-none opacity-80"></div>
@@ -104,25 +135,74 @@
   </header>
 
   <!-- Brutalist / WebGL Style Hero Section -->
-  <section id="hero" class="relative z-10 min-h-[90vh] flex flex-col justify-center px-6 md:px-12 pt-32 pb-20">
-      <div class="max-w-6xl w-full mx-auto">
-          <div class="mb-6 min-h-[140px] md:min-h-[200px]">
-              <h1 class="hero-title opacity-0 translate-y-8 text-5xl md:text-7xl lg:text-[7vw] font-display font-bold text-white leading-[1.1] tracking-tighter">
-                  We are Your <br class="hidden md:block" />
-                  <span class="typed-text text-accent"></span>
-              </h1>
-          </div>
-          <div class="mt-8 md:mt-12">
-              <p class="hero-subtitle opacity-0 translate-y-8 text-lg md:text-2xl text-zinc-400 max-w-2xl font-sans font-light leading-relaxed">
-                  System implementation specialists accelerating enterprise business solutions.
-              </p>
-          </div>
-          
-          <div class="mt-12 flex gap-6 items-center hero-buttons">
-              <a href="#services" class="hover-target px-8 py-4 bg-accent text-white font-bold rounded-full uppercase tracking-widest text-sm flex items-center gap-3 transition-transform hover:scale-105">
-                  Explore Services
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-              </a>
+  <section id="hero" class="relative z-10 min-h-[90vh] flex flex-col justify-center px-6 md:px-12 pt-32 pb-20 overflow-hidden">
+      <div class="max-w-7xl w-full mx-auto">
+          <div class="grid lg:grid-cols-12 gap-12 items-center">
+              
+              <!-- Left Side: Text Content -->
+              <div class="lg:col-span-7">
+                  <div class="mb-6 min-h-[140px] md:min-h-[200px]">
+                      <h1 class="hero-title opacity-0 translate-y-8 text-5xl md:text-7xl font-display font-bold text-white leading-[1.1] tracking-tighter">
+                          We are Your <br class="hidden md:block" />
+                          <span class="typed-text text-accent"></span>
+                      </h1>
+                  </div>
+                  <div class="mt-8 md:mt-12">
+                      <p class="hero-subtitle opacity-0 translate-y-8 text-lg md:text-xl text-zinc-400 max-w-xl font-sans font-light leading-relaxed">
+                          We provide high-availability Cloud infrastructure, tailored ERP solutions, comprehensive web ecosystems, data-driven marketing frameworks, marine consultancy, and custom event management solutions.
+                      </p>
+                  </div>
+                  
+                  <div class="mt-12 flex gap-6 items-center hero-buttons opacity-0 translate-y-8">
+                      <a href="#services" class="hover-target px-8 py-4 bg-accent text-white font-bold rounded-full uppercase tracking-widest text-sm flex items-center gap-3 transition-transform hover:scale-105">
+                          Explore Services
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                      </a>
+                  </div>
+              </div>
+              
+              <!-- Right Side: Abstract Tech Graphic -->
+              <div class="lg:col-span-5 hidden lg:flex justify-center relative">
+                  <!-- Abstract glowing elements -->
+                  <div class="absolute top-1/4 -left-8 w-48 h-48 bg-accent/20 rounded-full blur-[80px] animate-pulse"></div>
+                  <div class="absolute bottom-1/4 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[100px] animate-pulse" style="animation-delay: 1.5s;"></div>
+                  
+                  <div class="relative w-full max-w-sm ml-auto">
+                      <!-- Main Floating Card -->
+                      <div class="hero-graphic-card glass-card rounded-[2rem] border border-white/10 p-8 animate-float relative z-20 backdrop-blur-xl bg-[#0a0a0a]/40 shadow-2xl">
+                          <div class="flex justify-between items-start mb-12">
+                              <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center border border-accent/30">
+                                  <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                              </div>
+                              <span class="text-xs text-white/50 font-mono tracking-widest">SYSTEM_LIVE</span>
+                          </div>
+                          <div>
+                              <div class="flex justify-between text-xs text-zinc-400 mb-2 font-light">
+                                  <span>Infrastructure Node</span>
+                                  <span class="text-accent font-medium">Optimized</span>
+                              </div>
+                              <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden mb-6">
+                                  <div class="h-full bg-gradient-to-r from-accent to-orange-400 w-[96%] rounded-full shadow-[0_0_10px_rgba(255,107,43,0.5)]"></div>
+                              </div>
+                              <p class="text-4xl font-display font-bold text-white tracking-tighter">99.99<span class="text-accent text-2xl">%</span></p>
+                              <p class="text-sm text-zinc-500 font-light mt-1">Uptime Reliability SLA</p>
+                          </div>
+                      </div>
+                      
+                      <!-- Secondary Floating Card (Offset) -->
+                      <div class="hero-graphic-card absolute -bottom-10 -left-12 z-30 w-64 p-6 glass-card rounded-[1.5rem] border border-white/10 animate-float-delayed backdrop-blur-xl bg-[#0a0a0a]/50 shadow-xl">
+                         <div class="flex items-center gap-4">
+                             <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center border border-blue-500/30">
+                                 <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                             </div>
+                             <div>
+                                 <p class="text-xs text-zinc-400 font-light">Global Routing</p>
+                                 <p class="text-lg text-white font-bold font-display">Active<span class="text-blue-400">.</span></p>
+                             </div>
+                         </div>
+                      </div>
+                  </div>
+              </div>
           </div>
       </div>
   </section>
@@ -344,31 +424,19 @@
       requestAnimationFrame(raf);
       gsap.registerPlugin(ScrollTrigger);
 
-      // 2. Custom Magnetic Cursor Logic
+      // 2. Sleek Professional Custom Cursor
       const cursor = document.getElementById('cursor');
-      const follower = document.getElementById('cursor-follower');
-      let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
+      let mouseX = 0, mouseY = 0;
       
       window.addEventListener('mousemove', (e) => {
           mouseX = e.clientX; mouseY = e.clientY;
-          gsap.to(cursor, { x: mouseX, y: mouseY, duration: 0.1, ease: 'power2.out' });
-      });
-      
-      gsap.ticker.add(() => {
-          followerX += (mouseX - followerX) * 0.15;
-          followerY += (mouseY - followerY) * 0.15;
-          gsap.set(follower, { x: followerX, y: followerY });
+          // Direct 1-to-1 tracking for maximum precision
+          gsap.to(cursor, { x: mouseX, y: mouseY, duration: 0, ease: 'none' });
       });
 
       document.querySelectorAll('.hover-target, a, button, input, select, textarea').forEach(el => {
-          el.addEventListener('mouseenter', () => {
-              gsap.to(cursor, { scale: 0, duration: 0.2 });
-              gsap.to(follower, { scale: 2, backgroundColor: 'rgba(255,255,255,0.05)', borderColor: 'rgba(255,255,255,1)', duration: 0.3, ease: 'back.out(1.5)' });
-          });
-          el.addEventListener('mouseleave', () => {
-              gsap.to(cursor, { scale: 1, duration: 0.2 });
-              gsap.to(follower, { scale: 1, backgroundColor: 'transparent', borderColor: 'rgba(255,255,255,0.4)', duration: 0.3 });
-          });
+          el.addEventListener('mouseenter', () => cursor.classList.add('hover-active'));
+          el.addEventListener('mouseleave', () => cursor.classList.remove('hover-active'));
       });
 
       // 3. Preloader & Hero Entrance
@@ -379,7 +447,8 @@
             .to('#preloader', { yPercent: -100, duration: 1, ease: 'expo.inOut' })
             .to('.hero-title', { y: 0, opacity: 1, duration: 1.2, ease: 'power4.out' }, "-=0.6")
             .to('.hero-subtitle', { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }, "-=0.8")
-            .from('.hero-buttons', { opacity: 0, y: 20, duration: 0.8 }, "-=0.6")
+            .to('.hero-buttons', { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, "-=0.6")
+            .from('.hero-graphic-card', { opacity: 0, y: 30, duration: 1, stagger: 0.2, ease: 'power2.out' }, "-=0.8")
             .call(() => {
                 if(typeof Typed !== 'undefined') {
                     new Typed('.typed-text', {
