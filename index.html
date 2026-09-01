@@ -29,47 +29,11 @@
   
   <!-- Core CSS -->
   <style>
-    body { background-color: #050505; color: #ffffff; cursor: none; overflow-x: hidden; }
+    body { background-color: #050505; color: #ffffff; overflow-x: hidden; }
     ::-webkit-scrollbar { display: none; }
     
     /* Preloader */
     #preloader { transform-origin: top; }
-    
-    /* Sleek Professional Cursor */
-    #cursor { 
-        position: fixed;
-        top: 0; left: 0;
-        width: 8px; height: 8px;
-        background-color: #ffffff;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 10000;
-        transform: translate(-50%, -50%); 
-        transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
-                    height 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
-                    background-color 0.3s ease, 
-                    border 0.3s ease;
-        mix-blend-mode: difference;
-    }
-    #cursor.hover-active {
-        width: 48px;
-        height: 48px;
-        background-color: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.8);
-        mix-blend-mode: normal;
-    }
-
-    /* Floating Animations for Hero Graphics */
-    @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-20px); }
-    }
-    @keyframes float-delayed {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-12px); }
-    }
-    .animate-float { animation: float 6s ease-in-out infinite; }
-    .animate-float-delayed { animation: float-delayed 5s ease-in-out infinite 1s; }
 
     /* Glassmorphism Cards */
     .glass-card {
@@ -101,9 +65,6 @@
          <span id="preloader-text" class="block text-white font-display text-2xl tracking-[0.2em] font-bold uppercase translate-y-[100%]">Initializing</span>
      </div>
   </div>
-
-  <!-- Sleek Professional Cursor -->
-  <div id="cursor"></div>
 
   <!-- Pure Parallax Starfield -->
   <div id="tsparticles" class="fixed inset-0 z-0 pointer-events-none opacity-80"></div>
@@ -161,48 +122,18 @@
                   </div>
               </div>
               
-              <!-- Right Side: Abstract Tech Graphic -->
+              <!-- Right Side: Corporate Image -->
               <div class="lg:col-span-5 hidden lg:flex justify-center relative">
-                  <!-- Abstract glowing elements -->
-                  <div class="absolute top-1/4 -left-8 w-48 h-48 bg-accent/20 rounded-full blur-[80px] animate-pulse"></div>
-                  <div class="absolute bottom-1/4 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[100px] animate-pulse" style="animation-delay: 1.5s;"></div>
+                  <!-- Abstract glow behind the image -->
+                  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-accent/20 rounded-full blur-[100px] animate-pulse"></div>
                   
-                  <div class="relative w-full max-w-sm ml-auto">
-                      <!-- Main Floating Card -->
-                      <div class="hero-graphic-card glass-card rounded-[2rem] border border-white/10 p-8 animate-float relative z-20 backdrop-blur-xl bg-[#0a0a0a]/40 shadow-2xl">
-                          <div class="flex justify-between items-start mb-12">
-                              <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center border border-accent/30">
-                                  <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                              </div>
-                              <span class="text-xs text-white/50 font-mono tracking-widest">SYSTEM_LIVE</span>
-                          </div>
-                          <div>
-                              <div class="flex justify-between text-xs text-zinc-400 mb-2 font-light">
-                                  <span>Infrastructure Node</span>
-                                  <span class="text-accent font-medium">Optimized</span>
-                              </div>
-                              <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden mb-6">
-                                  <div class="h-full bg-gradient-to-r from-accent to-orange-400 w-[96%] rounded-full shadow-[0_0_10px_rgba(255,107,43,0.5)]"></div>
-                              </div>
-                              <p class="text-4xl font-display font-bold text-white tracking-tighter">99.99<span class="text-accent text-2xl">%</span></p>
-                              <p class="text-sm text-zinc-500 font-light mt-1">Uptime Reliability SLA</p>
-                          </div>
-                      </div>
-                      
-                      <!-- Secondary Floating Card (Offset) -->
-                      <div class="hero-graphic-card absolute -bottom-10 -left-12 z-30 w-64 p-6 glass-card rounded-[1.5rem] border border-white/10 animate-float-delayed backdrop-blur-xl bg-[#0a0a0a]/50 shadow-xl">
-                         <div class="flex items-center gap-4">
-                             <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center border border-blue-500/30">
-                                 <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
-                             </div>
-                             <div>
-                                 <p class="text-xs text-zinc-400 font-light">Global Routing</p>
-                                 <p class="text-lg text-white font-bold font-display">Active<span class="text-blue-400">.</span></p>
-                             </div>
-                         </div>
+                  <div class="relative w-full max-w-md hero-graphic opacity-0 translate-y-8">
+                      <div class="glass-card p-2 rounded-[2.5rem] border border-white/10 shadow-2xl overflow-hidden">
+                          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80" alt="Corporate Team" class="w-full h-auto rounded-[2rem] object-cover mix-blend-luminosity hover:mix-blend-normal transition-all duration-700">
                       </div>
                   </div>
               </div>
+
           </div>
       </div>
   </section>
@@ -337,7 +268,7 @@
             <input type="text" name="Name" placeholder="Name" required class="w-full bg-[#050505]/50 border border-white/10 text-white rounded-2xl px-6 py-4 focus:outline-none focus:border-accent transition-colors hover-target placeholder:text-zinc-600">
             <input type="email" name="Email Address" placeholder="Email" required class="w-full bg-[#050505]/50 border border-white/10 text-white rounded-2xl px-6 py-4 focus:outline-none focus:border-accent transition-colors hover-target placeholder:text-zinc-600">
           </div>
-          <select name="Target Department" class="hover-target w-full bg-[#050505]/50 border border-white/10 text-zinc-400 rounded-2xl px-6 py-4 focus:outline-none focus:border-accent transition-colors appearance-none cursor-none">
+          <select name="Target Department" class="hover-target w-full bg-[#050505]/50 border border-white/10 text-zinc-400 rounded-2xl px-6 py-4 focus:outline-none focus:border-accent transition-colors appearance-none">
             <option value="Cloud Computing Division">Cloud Computing & AI</option>
             <option value="ERP Solutions">ERP Solutions</option>
             <option value="App &amp; Web Systems Infrastructure">App &amp; Web Systems Solutions</option>
@@ -346,7 +277,7 @@
             <option value="Marine Consultancy Division">Marine Consultancy</option>
           </select>
           <textarea name="Project Operational Parameters" rows="4" placeholder="Describe here..." required class="hover-target w-full bg-[#050505]/50 border border-white/10 text-white rounded-2xl px-6 py-4 focus:outline-none focus:border-accent transition-colors resize-none placeholder:text-zinc-600"></textarea>
-          <button type="submit" class="hover-target w-full bg-white text-black font-bold text-sm py-5 rounded-2xl transition-all hover:bg-accent hover:text-white hover:scale-[1.02] uppercase tracking-widest cursor-none">Submit Proposal</button>
+          <button type="submit" class="hover-target w-full bg-white text-black font-bold text-sm py-5 rounded-2xl transition-all hover:bg-accent hover:text-white hover:scale-[1.02] uppercase tracking-widest">Submit Proposal</button>
         </form>
       </div>
     </div>
@@ -424,22 +355,7 @@
       requestAnimationFrame(raf);
       gsap.registerPlugin(ScrollTrigger);
 
-      // 2. Sleek Professional Custom Cursor
-      const cursor = document.getElementById('cursor');
-      let mouseX = 0, mouseY = 0;
-      
-      window.addEventListener('mousemove', (e) => {
-          mouseX = e.clientX; mouseY = e.clientY;
-          // Direct 1-to-1 tracking for maximum precision
-          gsap.to(cursor, { x: mouseX, y: mouseY, duration: 0, ease: 'none' });
-      });
-
-      document.querySelectorAll('.hover-target, a, button, input, select, textarea').forEach(el => {
-          el.addEventListener('mouseenter', () => cursor.classList.add('hover-active'));
-          el.addEventListener('mouseleave', () => cursor.classList.remove('hover-active'));
-      });
-
-      // 3. Preloader & Hero Entrance
+      // 2. Preloader & Hero Entrance
       window.addEventListener('load', () => {
           const tl = gsap.timeline();
           tl.to('#preloader-text', { y: 0, duration: 0.8, ease: 'power4.out' })
@@ -448,7 +364,7 @@
             .to('.hero-title', { y: 0, opacity: 1, duration: 1.2, ease: 'power4.out' }, "-=0.6")
             .to('.hero-subtitle', { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }, "-=0.8")
             .to('.hero-buttons', { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, "-=0.6")
-            .from('.hero-graphic-card', { opacity: 0, y: 30, duration: 1, stagger: 0.2, ease: 'power2.out' }, "-=0.8")
+            .to('.hero-graphic', { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }, "-=0.8")
             .call(() => {
                 if(typeof Typed !== 'undefined') {
                     new Typed('.typed-text', {
@@ -463,7 +379,7 @@
             });
       });
 
-      // 4. Scroll Reveals
+      // 3. Scroll Reveals
       gsap.utils.toArray('.reveal-fade').forEach(elem => {
           gsap.fromTo(elem, 
               { autoAlpha: 0, y: 30 }, 
@@ -471,7 +387,7 @@
           );
       });
 
-      // 5. Header Auto-Hide
+      // 4. Header Auto-Hide
       let lastScroll = 0;
       window.addEventListener('scroll', () => {
           const currentScroll = window.pageYOffset;
@@ -483,7 +399,7 @@
           lastScroll = currentScroll;
       });
 
-      // 6. Pure Parallax Particles
+      // 5. Pure Parallax Particles
       tsParticles.load("tsparticles", {
         fpsLimit: 60,
         interactivity: {
