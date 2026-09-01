@@ -1,410 +1,415 @@
 <!DOCTYPE html>
-<html lang="en" x-data="app()" :class="{'dark':dark}">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="FLYHISOCIAL - Enterprise IT Services & Custom Solutions.">
-  <meta name="keywords" content="IT Services, Cloud, ERP, SAP, UI/UX, Web Development, Event Management, Marine Consultancy">
-  <meta name="author" content="FLYHISOCIAL">
+  <title>FLYHI SOCIAL | Next-Gen Digital Ecosystems</title>
   <link rel="shortcut icon" href="FlyHi Social Logo-selection-5.png" type="image/x-icon">
-  <title>FLYHISOCIAL | Corporate IT Services & Solutions</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
   
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js"></script>
-  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <!-- Premium Fonts (Space Grotesk & Inter) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: { display: ['PT Sans','sans-serif'], body: ['DM Sans','sans-serif'] },
-          colors: { accent: '#FF6B2B', 'accent-light': '#FF8F5C' }
-        }
-      }
+    tailwind.config = { 
+      darkMode: 'class', 
+      theme: { 
+        extend: { 
+          colors: { accent: '#FF6B2B' },
+          fontFamily: {
+            display: ['Space Grotesk', 'sans-serif'],
+            sans: ['Inter', 'sans-serif']
+          }
+        } 
+      } 
     }
   </script>
+  
+  <!-- Core CSS -->
   <style>
-    *,*::before,*::after{box-sizing:border-box}
-    html,body{font-family:'DM Sans',sans-serif}
-    h1,h2,h3,h4,h5,h6{font-family:'PT Sans',sans-serif}
-    body{transition:background-color .3s,color .3s}
-    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.35; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E")}
-    ::-webkit-scrollbar{width:5px}
-    ::-webkit-scrollbar-track{background:transparent}
-    ::-webkit-scrollbar-thumb{background:#FF6B2B;border-radius:99px}
-    .reveal{visibility:hidden;} /* Handled by GSAP */
-    .nl{position:relative}
-    .nl::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:currentColor;transition:width .22s cubic-bezier(.4,0,.2,1)}
-    .nl:hover::after,.nl.on::after{width:100%}
-    .shimmer{position:relative;overflow:hidden}
-    .shimmer::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:rgba(255,255,255,.18);transform:skewX(-20deg);transition:left .4s cubic-bezier(.4,0,.2,1)}
-    .shimmer:hover::after{left:160%}
-    .pf{overflow:hidden;background:#e4e4e7}
-    .pf img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.4,0,.2,1)}
-    .pf:hover img{transform:scale(1.03)}
-    .card-h{transition:border-color .18s}
-    [x-cloak]{display:none!important}
-    html.lenis { height: auto; }
-    .lenis.lenis-smooth { scroll-behavior: auto !important; }
-    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-    .lenis.lenis-stopped { overflow: hidden; }
-    .lenis.lenis-scrolling iframe { pointer-events: none; }
-    .typed-cursor { color: #FF6B2B; font-weight: 300; }
+    body { background-color: #050505; color: #ffffff; cursor: none; overflow-x: hidden; }
+    ::-webkit-scrollbar { display: none; }
+    
+    /* Preloader */
+    #preloader { transform-origin: top; }
+    
+    /* Custom Cursor */
+    #cursor { transform: translate(-50%, -50%); }
+    #cursor-follower { transform: translate(-50%, -50%); }
+
+    /* Glassmorphism Cards */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .glass-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 107, 43, 0.4);
+      transform: translateY(-8px);
+    }
   </style>
 </head>
-<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased">
-  <div id="tsparticles" class="fixed inset-0 z-0 pointer-events-none"></div>
-  <header class="fixed inset-x-0 top-0 z-50 transition-all duration-300 bg-zinc-950 border-b border-zinc-900">
-    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
-      <a href="index.html" class="flex items-center gap-3 relative z-10 select-none">
-        <svg class="h-10 w-auto" viewBox="0 0 250 84" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="56" y="0" width="24" height="24" fill="#E52D12"/>
-          <rect x="28" y="28" width="24" height="24" fill="#FFFFFF"/>
-          <rect x="56" y="28" width="24" height="24" fill="#FFFFFF"/>
-          <rect x="0" y="56" width="24" height="24" fill="#FFFFFF"/>
-          <rect x="28" y="56" width="24" height="24" fill="#FFFFFF"/>
-          <text x="100" y="34" fill="#FFFFFF" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-weight="700" font-size="40" letter-spacing="-0.01em">FLYHi</text>
-          <text x="100" y="74" fill="#FFFFFF" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-weight="600" font-size="25" letter-spacing="0.08em">SOCIAL</text>
-        </svg>
-      </a>
-      <ul class="hidden md:flex items-center gap-8 text-sm font-medium" role="list">
-        <li><a href="#hero" class="nl text-zinc-300 hover:text-white transition-colors">Home</a></li>
-        <li><a href="#services" class="nl text-zinc-300 hover:text-white transition-colors">Services</a></li>
-        <li><a href="#about" class="nl text-zinc-300 hover:text-white transition-colors">About Us</a></li>
-        <li><a href="#contact" class="nl text-zinc-300 hover:text-white transition-colors">Contact Us</a></li>
-      </ul>
-      <div class="flex items-center gap-3">
-        <button @click="dark=!dark" class="w-9 h-9 flex items-center justify-center rounded-full border border-zinc-800 text-white hover:bg-zinc-900 transition-colors" :aria-label="dark?'Light mode':'Dark mode'">
-          <svg x-show="!dark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-          <svg x-show="dark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
-        </button>
-        <a href="#contact" class="hidden md:inline-flex items-center gap-2 shimmer bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors">
-          Get Started <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-        </a>
-        <button @click="mm=!mm" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-zinc-800 text-white" :aria-expanded="mm" aria-label="Toggle menu">
-          <svg x-show="!mm" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-          <svg x-show="mm" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
+<body class="antialiased font-sans">
+  
+  <!-- Cinematic Preloader -->
+  <div id="preloader" class="fixed inset-0 z-[9999] bg-[#050505] flex flex-col items-center justify-center">
+     <svg class="h-12 w-12 mb-6 animate-pulse" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="56" y="0" width="24" height="24" rx="2" fill="#FF6B2B"/>
+        <rect x="28" y="28" width="24" height="24" rx="2" fill="#FFFFFF"/>
+        <rect x="56" y="28" width="24" height="24" rx="2" fill="#FFFFFF"/>
+        <rect x="0" y="56" width="24" height="24" rx="2" fill="#FFFFFF"/>
+        <rect x="28" y="56" width="24" height="24" rx="2" fill="#FFFFFF"/>
+     </svg>
+     <div class="overflow-hidden">
+         <span id="preloader-text" class="block text-white font-display text-2xl tracking-[0.2em] font-bold uppercase translate-y-[100%]">Initializing</span>
+     </div>
+  </div>
+
+  <!-- Magnetic Custom Cursor -->
+  <div id="cursor" class="fixed top-0 left-0 w-2 h-2 bg-white rounded-full pointer-events-none z-[10000] mix-blend-difference"></div>
+  <div id="cursor-follower" class="fixed top-0 left-0 w-10 h-10 border border-white/40 rounded-full pointer-events-none z-[10000] flex items-center justify-center"></div>
+
+  <!-- Pure Parallax Starfield -->
+  <div id="tsparticles" class="fixed inset-0 z-0 pointer-events-none opacity-80"></div>
+
+  <!-- Premium Frosted Glass Header -->
+  <header class="fixed top-0 w-full z-50 bg-[#050505]/40 backdrop-blur-xl border-b border-white/5 py-4 px-6 md:px-12 flex justify-between items-center transition-transform duration-300" id="header">
+    <a href="index.html" class="flex items-center gap-3 hover-target group">
+      <svg class="h-8 w-8 shrink-0 transition-transform group-hover:scale-110 duration-300" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="56" y="0" width="24" height="24" rx="2" fill="#FF6B2B"/>
+        <rect x="28" y="28" width="24" height="24" rx="2" fill="#FFFFFF"/>
+        <rect x="56" y="28" width="24" height="24" rx="2" fill="#FFFFFF"/>
+        <rect x="0" y="56" width="24" height="24" rx="2" fill="#FFFFFF"/>
+        <rect x="28" y="56" width="24" height="24" rx="2" fill="#FFFFFF"/>
+      </svg>
+      <div class="flex flex-col justify-center leading-none">
+        <span class="font-display font-bold text-xl tracking-tight text-white">FLYHi</span>
+        <span class="text-[8px] font-bold uppercase tracking-[0.3em] text-zinc-400 mt-0.5">SOCIAL</span>
       </div>
+    </a>
+    <nav class="hidden md:flex gap-8 items-center">
+        <a href="#hero" class="hover-target text-sm font-medium text-zinc-300 hover:text-white uppercase tracking-wider transition-colors">Home</a>
+        <a href="#services" class="hover-target text-sm font-medium text-zinc-300 hover:text-white uppercase tracking-wider transition-colors">Services</a>
+        <a href="#about" class="hover-target text-sm font-medium text-zinc-300 hover:text-white uppercase tracking-wider transition-colors">About Us</a>
+        <a href="#contact" class="hover-target text-sm font-medium text-zinc-300 hover:text-white uppercase tracking-wider transition-colors">Contact Us</a>
+        <a href="#contact" class="hover-target px-6 py-2.5 bg-accent text-white font-semibold text-sm rounded-full hover:bg-white hover:text-black transition-colors duration-300 uppercase tracking-wide flex items-center gap-2">
+            Get Started <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
     </nav>
-    <div x-show="mm" x-cloak x-transition class="md:hidden bg-zinc-950 border-t border-zinc-900 px-6 py-5 space-y-4">
-      <a href="#hero" @click="mm=false" class="block text-zinc-300 hover:text-white">Home</a>
-      <a href="#services" @click="mm=false" class="block text-zinc-300 hover:text-white">Our Services</a>
-      <a href="#about" @click="mm=false" class="block text-zinc-300 hover:text-white">About</a>
-      <a href="#contact" @click="mm=false" class="block text-zinc-300 hover:text-white">Contact Us</a>
-    </div>
   </header>
-  <main class="relative z-10">
-    <section id="hero" class="relative w-full overflow-hidden pt-32 pb-20 md:pt-40 md:pb-24">
-      <div class="absolute top-1/4 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="relative z-10 max-w-6xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <!-- TYPING ANIMATION WRAPPER -->
-          <h1 class="reveal font-display font-bold text-5xl md:text-6xl lg:text-7xl leading-tight text-zinc-900 dark:text-white mb-6 min-h-[120px] md:min-h-[144px]">
-            We are Your <br class="hidden md:block" />
-            <span class="typed-text text-accent"></span>
-          </h1>
-          <p class="reveal text-lg text-zinc-500 dark:text-zinc-400 font-light leading-relaxed mb-8">
-            We provide high-availability Cloud infrastructure, tailored ERP solutions, comprehensive web ecosystems, data-driven marketing frameworks, marine consultancy, and custom event management solutions.
-          </p>
-          <div class="reveal flex gap-4">
-            <a href="#services" class="shimmer bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-medium px-7 py-3.5 rounded-full text-sm">Explore Capabilities</a>
-            <a href="#contact" class="border border-zinc-300 dark:border-zinc-700 px-7 py-3.5 rounded-full text-sm font-medium">Submit Inquiry</a>
+
+  <!-- Brutalist / WebGL Style Hero Section -->
+  <section id="hero" class="relative z-10 min-h-[90vh] flex flex-col justify-center px-6 md:px-12 pt-32 pb-20">
+      <div class="max-w-6xl w-full mx-auto">
+          <div class="overflow-hidden pt-8 -mt-8 mb-2">
+              <h1 class="hero-title text-5xl md:text-[8vw] font-display font-bold text-white leading-[0.9] tracking-tighter uppercase translate-y-[120%] skew-y-[5deg]">Experience</h1>
           </div>
-        </div>
-        <div class="reveal flex justify-center md:justify-end">
-          <div class="hero-image-wrapper relative w-80 h-80 lg:w-96 lg:h-96 pf rounded-3xl shadow-lg">
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="FLYHISOCIAL Corporate Headquarters Building">
+          <div class="overflow-hidden pt-8 -mt-8 mb-2">
+              <h1 class="hero-title text-5xl md:text-[8vw] font-display font-bold text-white leading-[0.9] tracking-tighter uppercase translate-y-[120%] skew-y-[5deg]">Liftoff with <span class="text-accent italic tracking-normal">Next-Gen</span></h1>
           </div>
-        </div>
-      </div>
-    </section>
-    <section id="services" class="py-24 bg-zinc-50 dark:bg-zinc-900/40">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="mb-14">
-          <h2 class="reveal font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Our Services</h2>
-        </div>
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="reveal card-h bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 flex flex-col justify-between group">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-zinc-800/80 flex items-center justify-center mb-5 text-accent">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-                </svg>
-              </div>
-              <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Cloud Computing & AI</h3>
-              <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-6">Scalable cloud hosting, smart automation, and seamless AI integrations built for performance and security.</p>
-            </div>
-            <div>
-              <a href="cloud-computing.html" class="inline-flex items-center gap-1 text-sm font-semibold text-accent hover:text-accent-light transition-colors group-hover:underline">
-                View more &rarr;
-              </a>
-            </div>
+          <div class="overflow-hidden pt-8 -mt-8">
+              <h1 class="hero-title text-5xl md:text-[8vw] font-display font-bold text-white leading-[0.9] tracking-tighter uppercase translate-y-[120%] skew-y-[5deg]">Ecosystems.</h1>
           </div>
-          <div class="reveal card-h bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 flex flex-col justify-between group">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-zinc-800/80 flex items-center justify-center mb-5 text-accent">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                </svg>
-              </div>
-              <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">ERP Solutions</h3>
-              <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-6">Aligning enterprise core functions, supply chain, financial tracking databases, and customized configuration modules. </p>
-            </div>
-            <div>
-              <a href="erp-consulting.html" class="inline-flex items-center gap-1 text-sm font-semibold text-accent hover:text-accent-light transition-colors group-hover:underline">
-                View more &rarr;
-              </a>
-            </div>
+          <div class="overflow-hidden mt-8 md:mt-12">
+              <p class="hero-subtitle text-lg md:text-2xl text-zinc-400 max-w-2xl font-sans font-light leading-relaxed translate-y-[100%] opacity-0">
+                  We architect high-throughput enterprise infrastructure, intelligent workflows, and immersive digital platforms that command market dominance.
+              </p>
           </div>
-          <div class="reveal card-h bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 flex flex-col justify-between group">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-zinc-800/80 flex items-center justify-center mb-5 text-accent">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-              </div>
-              <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">App &amp; Web Development</h3>
-              <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-6">Production-ready system architectures, e-commerce engines, and high-performance framework integration. </p>
-            </div>
-            <div>
-              <a href="app-web-development.html" class="inline-flex items-center gap-1 text-sm font-semibold text-accent hover:text-accent-light transition-colors group-hover:underline">
-                View more &rarr;
-              </a>
-            </div>
-          </div>
-          <div class="reveal card-h bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 flex flex-col justify-between group">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-zinc-800/80 flex items-center justify-center mb-5 text-accent">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
-                </svg>
-              </div>
-              <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Digital Marketing</h3>
-              <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-6">Targeted multi-channel ad optimizations, structured search visibility enhancements, and analytical metric metrics tracking. </p>
-            </div>
-            <div>
-              <a href="digital-marketing.html" class="inline-flex items-center gap-1 text-sm font-semibold text-accent hover:text-accent-light transition-colors group-hover:underline">
-                View more &rarr;
-              </a>
-            </div>
-          </div>
-          <div class="reveal card-h bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 flex flex-col justify-between group">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-zinc-800/80 flex items-center justify-center mb-5 text-accent">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Event Management</h3>
-              <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-6">Coordinating tech summits, brand launches, and smooth physical-to-hybrid streaming operations. </p>
-            </div>
-            <div>
-              <a href="event-management.html" class="inline-flex items-center gap-1 text-sm font-semibold text-accent hover:text-accent-light transition-colors group-hover:underline">
-                View more &rarr;
-              </a>
-            </div>
-          </div>
-          <div class="reveal card-h bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 flex flex-col justify-between group">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-zinc-800/80 flex items-center justify-center mb-5 text-accent">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="5" r="3" />
-                  <line x1="12" y1="22" x2="12" y2="8" />
-                  <path d="M5 12H2a10 10 0 0 0 20 0h-3" />
-                </svg>
-              </div>
-              <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Marine Consultancy</h3>
-              <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-6">Naval engineering, maritime safety audits, vessel surveys, and specialized technical operations support.</p>
-            </div>
-            <div>
-              <a href="marine-consultancy.html" class="inline-flex items-center gap-1 text-sm font-semibold text-accent hover:text-accent-light transition-colors group-hover:underline">
-                View more &rarr;
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="about" class="py-24 bg-zinc-50 dark:bg-zinc-900/40">
-      <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-        <div class="reveal">
-          <h2 class="font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white mb-6">We Simplify Complex Systems Infrastructure</h2>
-          <div class="space-y-4 font-light text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            <p>
-              Located in Bhubaneswar, Odisha, <strong>FLYHISOCIAL</strong> functions as a dedicated engineering group focused on resolving multi-tier system integration issues. We bridge organizational needs with robust code design. 
-            </p>
-            <p>
-              Our internal structure minimizes operational ambiguity. Each distinct department operates under specialized team leads with targeted technical background paths to guarantee immediate technical assistance. 
-            </p>
-          </div>
-        </div>
-        <div class="reveal flex justify-center md:justify-end">
-          <div class="relative w-full h-80 md:h-[420px] pf rounded-3xl shadow-sm">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="FLYHISOCIAL Premium Corporate Studio Environment">
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="contact" class="py-24 max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="bg-zinc-900 rounded-3xl p-6 sm:p-10 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-        <div class="lg:col-span-5 text-center lg:text-left">
-          <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white mb-4">Contact Us</h2>
-          <p class="text-zinc-400 text-sm sm:text-base leading-relaxed max-w-md mx-auto lg:mx-0">
-            Please fill the form for our respective team to contact you. 
-          </p>
-        </div>
-        <div class="lg:col-span-7 w-full">
-          <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
-            <input type="hidden" name="access_key" value="fd55cef8-5384-4223-b3b6-ad18cc618f08">
-            <input type="hidden" name="subject" value="New Corporate Project Brief - FLYHISOCIAL Desk">
-            <input type="hidden" name="from_name" value="FLYHISOCIAL Portal">
-            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input type="text" name="Name" placeholder="Name" required class="w-full bg-zinc-800 border border-zinc-700 text-white text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-accent">
-              <input type="email" name="Email Address" placeholder="Email" required class="w-full bg-zinc-800 border border-zinc-700 text-white text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-accent">
-            </div>
-            <select name="Target Department" class="w-full bg-zinc-800 border border-zinc-700 text-zinc-400 text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-accent">
-              <option value="Cloud Computing Division">Cloud Computing & AI</option>
-              <option value="ERP Solutions">ERP Solutions</option>
-              <option value="App &amp; Web Systems Infrastructure">App &amp; Web Systems Solutions</option>
-              <option value="Digital Marketing Execution">Digital Marketing</option>
-              <option value="Event Management Division">Event Management</option>
-              <option value="Marine Consultancy Division">Marine Consultancy</option>
-            </select>
-            <textarea name="Project Operational Parameters" rows="4" placeholder="Describe here..." required class="w-full bg-zinc-800 border border-zinc-700 text-white text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-accent resize-none"></textarea>
-            <button type="submit" class="shimmer w-full bg-accent text-white font-bold text-sm py-3.5 rounded-xl transition-colors">Submit</button>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-  <footer class="relative z-10 bg-zinc-950 text-zinc-400 border-t border-zinc-900 pt-16 pb-8">
-    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-      <div>
-        <a href="index.html" class="flex items-center gap-3 mb-4 select-none">
-          <svg class="h-10 w-auto" viewBox="0 0 250 84" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="56" y="0" width="24" height="24" fill="#E52D12"/>
-            <rect x="28" y="28" width="24" height="24" fill="#FFFFFF"/>
-            <rect x="56" y="28" width="24" height="24" fill="#FFFFFF"/>
-            <rect x="0" y="56" width="24" height="24" fill="#FFFFFF"/>
-            <rect x="28" y="56" width="24" height="24" fill="#FFFFFF"/>
-            <text x="100" y="34" fill="#FFFFFF" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-weight="700" font-size="40" letter-spacing="-0.01em">FLYHi</text>
-            <text x="100" y="74" fill="#FFFFFF" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-weight="600" font-size="25" letter-spacing="0.08em">SOCIAL</text>
-          </svg>
-        </a>
-        <p class="text-sm leading-relaxed">System implementation specialists accelerating enterprise business solutions. </p>
-      </div>
-      <div>
-        <h2 class="text-white font-semibold mb-4 text-sm uppercase">Services</h2>
-        <ul class="space-y-2 text-sm">
-          <li><a href="cloud-computing.html" class="hover:text-white transition-colors">Cloud Computing & AI</a></li>
-          <li><a href="erp-consulting.html" class="hover:text-white transition-colors">ERP Solutions</a></li>
-          <li><a href="app-web-development.html" class="hover:text-white transition-colors">App & Web-development</a></li>
-          <li><a href="digital-marketing.html" class="hover:text-white transition-colors">Digital-Marketing</a></li>
-          <li><a href="event-management.html" class="hover:text-white transition-colors">Event Management</a></li>
-          <li><a href="marine-consultancy.html" class="hover:text-white transition-colors">Marine Consultancy</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="text-white font-semibold mb-4 text-sm uppercase">Company</h2>
-        <ul class="space-y-2 text-sm">
-          <li><a href="index.html#hero" class="hover:text-white transition-colors">Corporate Home</a></li>
-          <li><a href="index.html#about" class="hover:text-white transition-colors">About Us</a></li>
-          <li><a href="index.html#contact" class="hover:text-white transition-colors">Contact Us</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="text-white font-semibold mb-4 text-sm uppercase">Address</h2>
-        <p class="text-sm text-zinc-500 leading-relaxed">Plot No. 4775/2, BJB Nagar, Bhubaneswar, Odisha 751014</p>
-      </div>
-    </div>
-    <div class="max-w-6xl mx-auto px-6 pt-8 border-t border-zinc-900 text-center md:flex md:justify-between text-xs text-zinc-500">
-      <p>&copy; 2026 FLYHISOCIAL. All rights reserved.</p>
-    </div>
-  </footer>
-  <script>
-    function app() {
-      return {
-        dark: false,
-        mm: false,
-        init() {
-          this.dark = localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-          this.$watch('dark', v => localStorage.setItem('theme', v ? 'dark' : 'light'));
           
-          // Typed.js Animation
-          if(typeof Typed !== 'undefined') {
-            new Typed('.typed-text', {
-              strings: ["Technology Partners.", "Digital Innovators.", "Growth Catalysts.", "System Experts."],
-              typeSpeed: 65,
-              backSpeed: 40,
-              backDelay: 2000,
-              loop: true,
-              cursorChar: '|'
-            });
+          <div class="mt-12 overflow-hidden flex gap-6 items-center hero-buttons">
+              <a href="#services" class="hover-target px-8 py-4 bg-accent text-white font-bold rounded-full uppercase tracking-widest text-sm flex items-center gap-3 transition-transform hover:scale-105">
+                  Explore Services
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+              </a>
+          </div>
+      </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="relative z-10 py-32 px-6 md:px-12 bg-black/50 border-y border-white/5">
+    <div class="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-16 items-center">
+      <div class="reveal-fade">
+        <h2 class="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-8 leading-tight tracking-tighter">We Simplify Complex Systems Infrastructure</h2>
+        <div class="space-y-6 font-light text-zinc-400 text-lg leading-relaxed font-sans">
+          <p>
+            Located in Bhubaneswar, Odisha, <strong class="text-white font-medium">FLYHISOCIAL</strong> functions as a dedicated engineering group focused on resolving multi-tier system integration issues. We bridge organizational needs with robust code design. 
+          </p>
+          <p>
+            Our internal structure minimizes operational ambiguity. Each distinct department operates under specialized team leads with targeted technical background paths to guarantee immediate technical assistance. 
+          </p>
+        </div>
+      </div>
+      <div class="reveal-fade flex justify-center md:justify-end">
+        <div class="relative w-full h-[400px] md:h-[500px] rounded-[2.5rem] overflow-hidden glass-card border border-white/10 hover-target">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="FLYHISOCIAL Corporate Studio" class="w-full h-full object-cover opacity-60 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section id="services" class="relative z-10 py-32 px-6 md:px-12">
+      <div class="max-w-7xl mx-auto w-full">
+          <div class="flex justify-between items-end mb-16 reveal-fade">
+              <h2 class="text-4xl md:text-[5vw] font-display font-bold text-white uppercase tracking-tighter leading-none">Core<br><span class="text-zinc-600">Services</span></h2>
+          </div>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              
+              <!-- Cloud Computing & AI -->
+              <a href="cloud-computing.html" class="hover-target glass-card p-10 rounded-[2.5rem] flex flex-col justify-between h-[400px] group relative overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div class="relative z-10">
+                      <h3 class="text-3xl font-display font-bold text-white mb-4 tracking-tight group-hover:text-blue-400 transition-colors">Cloud Computing & AI</h3>
+                      <p class="text-zinc-400 font-light leading-relaxed">Scalable infrastructure, serverless APIs, intelligent workflow automation, and secure deployments.</p>
+                  </div>
+                  <div class="relative z-10 w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-blue-500 group-hover:border-blue-500 transition-colors duration-300">
+                      <svg class="w-6 h-6 text-white transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                  </div>
+              </a>
+
+              <!-- ERP Solutions -->
+              <a href="erp-consulting.html" class="hover-target glass-card p-10 rounded-[2.5rem] flex flex-col justify-between h-[400px] group relative overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div class="relative z-10">
+                      <h3 class="text-3xl font-display font-bold text-white mb-4 tracking-tight group-hover:text-emerald-400 transition-colors">ERP Solutions</h3>
+                      <p class="text-zinc-400 font-light leading-relaxed">Enterprise resource planning, SAP integrations, and unified supply chain core systems.</p>
+                  </div>
+                  <div class="relative z-10 w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-emerald-500 group-hover:border-emerald-500 transition-colors duration-300">
+                      <svg class="w-6 h-6 text-white transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                  </div>
+              </a>
+
+              <!-- App & Web Dev -->
+              <a href="app-web-development.html" class="hover-target glass-card p-10 rounded-[2.5rem] flex flex-col justify-between h-[400px] group relative overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div class="relative z-10">
+                      <h3 class="text-3xl font-display font-bold text-white mb-4 tracking-tight group-hover:text-purple-400 transition-colors">App & Web-development</h3>
+                      <p class="text-zinc-400 font-light leading-relaxed">Full-stack web applications, immersive UI/UX, and native mobile architectures.</p>
+                  </div>
+                  <div class="relative z-10 w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-purple-500 group-hover:border-purple-500 transition-colors duration-300">
+                      <svg class="w-6 h-6 text-white transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                  </div>
+              </a>
+
+              <!-- Digital Marketing -->
+              <a href="digital-marketing.html" class="hover-target glass-card p-10 rounded-[2.5rem] flex flex-col justify-between h-[400px] group relative overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div class="relative z-10">
+                      <h3 class="text-3xl font-display font-bold text-white mb-4 tracking-tight group-hover:text-pink-400 transition-colors">Digital-Marketing</h3>
+                      <p class="text-zinc-400 font-light leading-relaxed">Data-driven growth strategies, SEO optimization, and precision advertising.</p>
+                  </div>
+                  <div class="relative z-10 w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-pink-500 group-hover:border-pink-500 transition-colors duration-300">
+                      <svg class="w-6 h-6 text-white transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                  </div>
+              </a>
+
+              <!-- Event Management -->
+              <a href="event-management.html" class="hover-target glass-card p-10 rounded-[2.5rem] flex flex-col justify-between h-[400px] group relative overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div class="relative z-10">
+                      <h3 class="text-3xl font-display font-bold text-white mb-4 tracking-tight group-hover:text-yellow-400 transition-colors">Event Management</h3>
+                      <p class="text-zinc-400 font-light leading-relaxed">Corporate tech summits, hybrid streaming infrastructure, and brand activations.</p>
+                  </div>
+                  <div class="relative z-10 w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-yellow-500 group-hover:border-yellow-500 transition-colors duration-300">
+                      <svg class="w-6 h-6 text-white transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                  </div>
+              </a>
+
+              <!-- Marine Consultancy -->
+              <a href="marine-consultancy.html" class="hover-target glass-card p-10 rounded-[2.5rem] flex flex-col justify-between h-[400px] group relative overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div class="relative z-10">
+                      <h3 class="text-3xl font-display font-bold text-white mb-4 tracking-tight group-hover:text-cyan-400 transition-colors">Marine Consultancy</h3>
+                      <p class="text-zinc-400 font-light leading-relaxed">Logistics planning, global fleet operations, and maritime systems architecture.</p>
+                  </div>
+                  <div class="relative z-10 w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-cyan-500 group-hover:border-cyan-500 transition-colors duration-300">
+                      <svg class="w-6 h-6 text-white transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                  </div>
+              </a>
+
+          </div>
+      </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="relative z-10 py-32 max-w-7xl mx-auto px-6 md:px-12 w-full">
+    <div class="glass-card rounded-[2.5rem] p-8 sm:p-12 lg:p-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative overflow-hidden border border-white/5">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-accent/20 rounded-full blur-[100px] -z-10"></div>
+      
+      <div class="lg:col-span-5 text-center lg:text-left reveal-fade">
+        <h2 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-white mb-6 tracking-tighter leading-none">Contact Us</h2>
+        <p class="text-zinc-400 text-lg leading-relaxed font-light">
+          Please fill the form for our respective team to contact you. 
+        </p>
+      </div>
+      
+      <div class="lg:col-span-7 w-full reveal-fade">
+        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+          <input type="hidden" name="access_key" value="fd55cef8-5384-4223-b3b6-ad18cc618f08">
+          <input type="hidden" name="subject" value="New Corporate Project Brief - FLYHISOCIAL Desk">
+          <input type="hidden" name="from_name" value="FLYHISOCIAL Portal">
+          <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <input type="text" name="Name" placeholder="Name" required class="w-full bg-[#050505]/50 border border-white/10 text-white rounded-2xl px-6 py-4 focus:outline-none focus:border-accent transition-colors hover-target placeholder:text-zinc-600">
+            <input type="email" name="Email Address" placeholder="Email" required class="w-full bg-[#050505]/50 border border-white/10 text-white rounded-2xl px-6 py-4 focus:outline-none focus:border-accent transition-colors hover-target placeholder:text-zinc-600">
+          </div>
+          <select name="Target Department" class="hover-target w-full bg-[#050505]/50 border border-white/10 text-zinc-400 rounded-2xl px-6 py-4 focus:outline-none focus:border-accent transition-colors appearance-none cursor-none">
+            <option value="Cloud Computing Division">Cloud Computing & AI</option>
+            <option value="ERP Solutions">ERP Solutions</option>
+            <option value="App &amp; Web Systems Infrastructure">App &amp; Web Systems Solutions</option>
+            <option value="Digital Marketing Execution">Digital Marketing</option>
+            <option value="Event Management Division">Event Management</option>
+            <option value="Marine Consultancy Division">Marine Consultancy</option>
+          </select>
+          <textarea name="Project Operational Parameters" rows="4" placeholder="Describe here..." required class="hover-target w-full bg-[#050505]/50 border border-white/10 text-white rounded-2xl px-6 py-4 focus:outline-none focus:border-accent transition-colors resize-none placeholder:text-zinc-600"></textarea>
+          <button type="submit" class="hover-target w-full bg-white text-black font-bold text-sm py-5 rounded-2xl transition-all hover:bg-accent hover:text-white hover:scale-[1.02] uppercase tracking-widest cursor-none">Submit Proposal</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rebuilt Detailed Footer -->
+  <footer class="relative z-10 bg-[#030303] pt-24 pb-12 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-16 mb-20">
+        <div>
+          <a href="index.html" class="flex items-center gap-3 mb-6 select-none hover-target group">
+            <svg class="h-10 w-auto group-hover:scale-105 transition-transform duration-300" viewBox="0 0 250 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="56" y="0" width="24" height="24" fill="#E52D12"/>
+              <rect x="28" y="28" width="24" height="24" fill="#FFFFFF"/>
+              <rect x="56" y="28" width="24" height="24" fill="#FFFFFF"/>
+              <rect x="0" y="56" width="24" height="24" fill="#FFFFFF"/>
+              <rect x="28" y="56" width="24" height="24" fill="#FFFFFF"/>
+              <text x="100" y="34" fill="#FFFFFF" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="40" letter-spacing="-0.01em">FLYHi</text>
+              <text x="100" y="74" fill="#FFFFFF" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="25" letter-spacing="0.08em">SOCIAL</text>
+            </svg>
+          </a>
+          <p class="text-sm text-zinc-500 leading-relaxed font-light pr-4">System implementation specialists accelerating enterprise business solutions.</p>
+        </div>
+        
+        <div>
+          <h2 class="text-white font-display font-bold mb-6 text-sm uppercase tracking-widest">Services</h2>
+          <ul class="space-y-4 text-sm font-light text-zinc-400">
+            <li><a href="cloud-computing.html" class="hover-target hover:text-accent transition-colors">Cloud Computing & AI</a></li>
+            <li><a href="erp-consulting.html" class="hover-target hover:text-accent transition-colors">ERP Solutions</a></li>
+            <li><a href="app-web-development.html" class="hover-target hover:text-accent transition-colors">App & Web-development</a></li>
+            <li><a href="digital-marketing.html" class="hover-target hover:text-accent transition-colors">Digital-Marketing</a></li>
+            <li><a href="event-management.html" class="hover-target hover:text-accent transition-colors">Event Management</a></li>
+            <li><a href="marine-consultancy.html" class="hover-target hover:text-accent transition-colors">Marine Consultancy</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h2 class="text-white font-display font-bold mb-6 text-sm uppercase tracking-widest">Company</h2>
+          <ul class="space-y-4 text-sm font-light text-zinc-400">
+            <li><a href="#hero" class="hover-target hover:text-accent transition-colors">Corporate Home</a></li>
+            <li><a href="#about" class="hover-target hover:text-accent transition-colors">About Us</a></li>
+            <li><a href="#contact" class="hover-target hover:text-accent transition-colors">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h2 class="text-white font-display font-bold mb-6 text-sm uppercase tracking-widest">Address</h2>
+          <p class="text-sm text-zinc-400 leading-relaxed font-light">Plot No. 4775/2, BJB Nagar,<br>Bhubaneswar, Odisha 751014</p>
+        </div>
+      </div>
+      
+      <div class="max-w-7xl mx-auto px-6 md:px-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-zinc-600 font-light">
+        <p>&copy; 2026 FLYHISOCIAL. All rights reserved.</p>
+        <div class="flex gap-6 mt-4 md:mt-0">
+            <a href="#" class="hover-target hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" class="hover-target hover:text-white transition-colors">Terms of Service</a>
+        </div>
+      </div>
+  </footer>
+
+  <!-- --------------------- SCRIPTS --------------------- -->
+  <!-- GSAP Core & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.32/dist/lenis.min.js"></script>
+  <!-- tsParticles -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+  
+  <script>
+      // 1. Lenis Smooth Scroll Setup
+      const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smooth: true })
+      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+      gsap.registerPlugin(ScrollTrigger);
+
+      // 2. Custom Magnetic Cursor Logic
+      const cursor = document.getElementById('cursor');
+      const follower = document.getElementById('cursor-follower');
+      let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
+      
+      window.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX; mouseY = e.clientY;
+          gsap.to(cursor, { x: mouseX, y: mouseY, duration: 0.1, ease: 'power2.out' });
+      });
+      
+      gsap.ticker.add(() => {
+          followerX += (mouseX - followerX) * 0.15;
+          followerY += (mouseY - followerY) * 0.15;
+          gsap.set(follower, { x: followerX, y: followerY });
+      });
+
+      document.querySelectorAll('.hover-target, a, button, input, select, textarea').forEach(el => {
+          el.addEventListener('mouseenter', () => {
+              gsap.to(cursor, { scale: 0, duration: 0.2 });
+              gsap.to(follower, { scale: 2, backgroundColor: 'rgba(255,255,255,0.05)', borderColor: 'rgba(255,255,255,1)', duration: 0.3, ease: 'back.out(1.5)' });
+          });
+          el.addEventListener('mouseleave', () => {
+              gsap.to(cursor, { scale: 1, duration: 0.2 });
+              gsap.to(follower, { scale: 1, backgroundColor: 'transparent', borderColor: 'rgba(255,255,255,0.4)', duration: 0.3 });
+          });
+      });
+
+      // 3. Preloader & Hero Entrance
+      window.addEventListener('load', () => {
+          const tl = gsap.timeline();
+          tl.to('#preloader-text', { y: 0, duration: 0.8, ease: 'power4.out' })
+            .to('#preloader-text', { y: '-100%', duration: 0.6, ease: 'power4.in', delay: 0.5 })
+            .to('#preloader', { yPercent: -100, duration: 1, ease: 'expo.inOut' })
+            .to('.hero-title', { y: 0, skewY: 0, duration: 1.2, stagger: 0.15, ease: 'power4.out' }, "-=0.6")
+            .to('.hero-subtitle', { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }, "-=0.8")
+            .from('.hero-buttons', { opacity: 0, y: 20, duration: 0.8 }, "-=0.6");
+      });
+
+      // 4. Scroll Reveals
+      gsap.utils.toArray('.reveal-fade').forEach(elem => {
+          gsap.fromTo(elem, 
+              { autoAlpha: 0, y: 30 }, 
+              { autoAlpha: 1, y: 0, duration: 1, ease: 'power2.out', scrollTrigger: { trigger: elem, start: 'top 90%' } }
+          );
+      });
+
+      // 5. Header Auto-Hide
+      let lastScroll = 0;
+      window.addEventListener('scroll', () => {
+          const currentScroll = window.pageYOffset;
+          if (currentScroll > 100 && currentScroll > lastScroll) {
+              gsap.to('#header', { yPercent: -100, duration: 0.4, ease: 'power2.out' });
+          } else {
+              gsap.to('#header', { yPercent: 0, duration: 0.4, ease: 'power2.out' });
           }
+          lastScroll = currentScroll;
+      });
 
-          // Lenis Smooth Scroll
-          const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'vertical',
-            gestureDirection: 'vertical',
-            smooth: true,
-          });
-          function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-          }
-          requestAnimationFrame(raf);
-
-          document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-              e.preventDefault();
-              lenis.scrollTo(this.getAttribute('href'));
-              if(document.querySelector('[x-data]').__x) {
-                document.querySelector('[x-data]').__x.$data.mm = false;
-              }
-            });
-          });
-
-          // GSAP
-          gsap.registerPlugin(ScrollTrigger);
-
-          // Hero Parallax & Float
-          gsap.to('.hero-image-wrapper', {
-            y: 80, ease: "none",
-            scrollTrigger: { trigger: "#hero", start: "top top", end: "bottom top", scrub: true }
-          });
-          gsap.to('.hero-image-wrapper img', { y: -15, duration: 2, yoyo: true, repeat: -1, ease: "sine.inOut" });
-
-          // Reveal Animations
-          gsap.utils.toArray('.reveal').forEach(elem => {
-            gsap.fromTo(elem, 
-              { autoAlpha: 0, y: 15 }, 
-              { autoAlpha: 1, y: 0, duration: 0.8, ease: "sine.out", scrollTrigger: { trigger: elem, start: "top 92%" } }
-            );
-          });
-
-          // Antigravity Starfield Dust
-          tsParticles.load("tsparticles", {
+      // 6. Pure Parallax Particles
+      tsParticles.load("tsparticles", {
         fpsLimit: 60,
         interactivity: {
           detectsOn: "window",
           events: { 
-            onHover: { 
-              enable: true, 
-              mode: "parallax",
-              parallax: { enable: true, force: 200, smooth: 3 }
-            }, 
+            onHover: { enable: true, mode: "parallax", parallax: { enable: true, force: 200, smooth: 3 } }, 
             resize: true 
           }
         },
@@ -419,9 +424,6 @@
         detectRetina: true,
         fullScreen: { enable: false, zIndex: 0 }
       });
-        }
-      }
-    }
   </script>
 </body>
 </html>
