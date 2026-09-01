@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" x-data="{ dark: false }" :class="{'dark':dark}" >
 <head>
   <meta charset="UTF-8">
@@ -218,53 +218,66 @@
   </main>
 
   <!-- GLOBAL FOOTER -->
-  <footer class="relative z-10 bg-zinc-950 text-zinc-400 border-t border-zinc-900 pt-16 pb-8">
-    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-      <div>
-        <a href="index.html" class="flex items-center gap-3 mb-4 select-none">
-          <svg class="h-10 w-auto" viewBox="0 0 250 84" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="56" y="0" width="24" height="24" fill="#E52D12"/>
-            <rect x="28" y="28" width="24" height="24" fill="#FFFFFF"/>
-            <rect x="56" y="28" width="24" height="24" fill="#FFFFFF"/>
-            <rect x="0" y="56" width="24" height="24" fill="#FFFFFF"/>
-            <rect x="28" y="56" width="24" height="24" fill="#FFFFFF"/>
-            <text x="100" y="34" fill="#FFFFFF" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-weight="700" font-size="40" letter-spacing="-0.01em">FLYHi</text>
-            <text x="100" y="74" fill="#FFFFFF" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-weight="600" font-size="25" letter-spacing="0.08em">SOCIAL</text>
-          </svg>
-        </a>
-        <p class="text-sm text-zinc-400 leading-relaxed mt-2">
-          System implementation specialists accelerating enterprise business solutions. 
-        </p>
+    <!-- Premium Rebuilt Footer -->
+  <footer class="relative z-10 bg-[#050505] pt-32 pb-12 overflow-hidden border-t border-white/5">
+      <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 mb-24">
+        
+        <!-- Column 1: Brand & Desc -->
+        <div class="md:col-span-4">
+          <a href="index.html" class="flex items-center gap-3 mb-8 select-none hover-target group inline-flex">
+            <svg class="h-12 w-auto group-hover:scale-105 transition-transform duration-300" viewBox="0 0 250 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="56" y="0" width="24" height="24" fill="#E52D12"/>
+              <rect x="28" y="28" width="24" height="24" fill="#FFFFFF"/>
+              <rect x="56" y="28" width="24" height="24" fill="#FFFFFF"/>
+              <rect x="0" y="56" width="24" height="24" fill="#FFFFFF"/>
+              <rect x="28" y="56" width="24" height="24" fill="#FFFFFF"/>
+              <text x="100" y="34" fill="#FFFFFF" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="40" letter-spacing="-0.01em">FLYHi</text>
+              <text x="100" y="74" fill="#FFFFFF" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="25" letter-spacing="0.08em">SOCIAL</text>
+            </svg>
+          </a>
+          <p class="text-base text-zinc-400 leading-relaxed font-light pr-4 max-w-sm">
+            System implementation specialists accelerating enterprise business solutions.
+          </p>
+        </div>
+        
+        <!-- Column 2: Services -->
+        <div class="md:col-span-3">
+          <h2 class="text-white font-display font-bold mb-8 text-sm uppercase tracking-widest">Services</h2>
+          <ul class="space-y-4 text-sm font-light text-zinc-400">
+            <li><a href="cloud-computing.html" class="hover-target hover:text-white transition-colors block">Cloud Computing & AI</a></li>
+            <li><a href="erp-consulting.html" class="hover-target hover:text-white transition-colors block">ERP Solutions</a></li>
+            <li><a href="app-web-development.html" class="hover-target hover:text-white transition-colors block">App & Web-development</a></li>
+            <li><a href="digital-marketing.html" class="hover-target hover:text-white transition-colors block">Digital-Marketing</a></li>
+            <li><a href="event-management.html" class="hover-target hover:text-white transition-colors block">Event Management</a></li>
+            <li><a href="marine-consultancy.html" class="hover-target hover:text-white transition-colors block">Marine Consultancy</a></li>
+          </ul>
+        </div>
+        
+        <!-- Column 3: Company -->
+        <div class="md:col-span-2">
+          <h2 class="text-white font-display font-bold mb-8 text-sm uppercase tracking-widest">Company</h2>
+          <ul class="space-y-4 text-sm font-light text-zinc-400">
+            <li><a href="index.html" class="hover-target hover:text-white transition-colors block">Corporate Home</a></li>
+            <li><a href="index.html#about" class="hover-target hover:text-white transition-colors block">About Us</a></li>
+            <li><a href="index.html#contact" class="hover-target hover:text-white transition-colors block">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <!-- Column 4: Contact Desk -->
+        <div class="md:col-span-3">
+          <h2 class="text-white font-display font-bold mb-8 text-sm uppercase tracking-widest">Contact Desk</h2>
+          <p class="text-sm text-zinc-400 leading-relaxed font-light mb-6">
+            Connect directly with our Lead Developer.
+          </p>
+          <span class="text-xs text-zinc-500 block uppercase font-bold mb-2 tracking-widest">Direct Routing Number</span>
+          <a href="tel:+919090031316" class="text-lg font-mono text-accent font-bold hover:text-white transition-colors block hover-target">+91 9090031316</a>
+        </div>
       </div>
-      <div>
-        <h2 class="text-white font-semibold mb-4 text-sm uppercase">Services</h2>
-        <ul class="space-y-2 text-sm">
-          <li><a href="cloud-computing.html" class="hover:text-white transition-colors">Cloud Computing & AI</a></li>
-          <li><a href="erp-consulting.html" class="hover:text-white transition-colors">ERP Solutions</a></li>
-          <li><a href="app-web-development.html" class="hover:text-white transition-colors">App & Web-development</a></li>
-          <li><a href="digital-marketing.html" class="hover:text-white transition-colors">Digital-Marketing</a></li>
-          <li><a href="event-management.html" class="hover:text-white transition-colors">Event Management</a></li>
-          <li><a href="marine-consultancy.html" class="hover:text-white transition-colors">Marine Consultancy</a></li>
-        </ul>
+      
+      <!-- Copyright / Bottom Bar -->
+      <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pt-8 border-t border-white/10 flex justify-center text-sm text-zinc-500 font-light tracking-wide">
+        <p>&copy; 2026 FLYHISOCIAL. All rights reserved.</p>
       </div>
-      <div>
-        <h2 class="text-white font-semibold mb-4 text-sm uppercase">Company</h2>
-        <ul class="space-y-2 text-sm">
-          <li><a href="index.html" class="hover:text-white transition-colors">Corporate Home</a></li>
-          <li><a href="index.html#about" class="hover:text-white transition-colors">About Us</a></li>
-          <li><a href="index.html#contact" class="hover:text-white transition-colors">Contact Us</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="text-white font-semibold mb-4 text-sm uppercase">Contact Desk</h2>
-        <p class="text-sm text-zinc-500 leading-relaxed mb-3">Connect directly with our Lead Developer.</p>
-        <span class="text-xs text-zinc-500 block uppercase font-bold mb-1">Direct Routing Number</span>
-        <a href="tel:+919090031316" class="text-lg font-mono text-accent font-bold hover:underline transition-all">+91 9090031316</a>
-      </div>
-    </div>
-    <div class="max-w-6xl mx-auto px-6 pt-8 border-t border-zinc-900 text-center md:flex md:justify-between text-xs text-zinc-500">
-      <p>&copy; 2026 FLYHISOCIAL. All rights reserved.</p>
-    </div>
   </footer>
 <!-- IMMERSIVE ADDITIONS -->
 <style>
