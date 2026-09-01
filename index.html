@@ -91,7 +91,20 @@
             Get Started <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
     </nav>
+    <button id="mobile-menu-btn" class="md:hidden flex flex-col justify-center items-center gap-1.5 w-10 h-10 z-[60] hover-target relative" aria-label="Toggle Menu">
+        <span class="w-6 h-0.5 bg-white transition-all duration-300 block"></span>
+        <span class="w-6 h-0.5 bg-white transition-all duration-300 block"></span>
+        <span class="w-6 h-0.5 bg-white transition-all duration-300 block"></span>
+    </button>
   </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="fixed inset-0 bg-[#050505]/98 backdrop-blur-3xl z-[55] translate-x-full transition-transform duration-500 flex flex-col justify-center items-center gap-8 md:hidden">
+      <a href="#hero" class="mobile-link text-2xl font-display font-bold text-white uppercase tracking-widest hover:text-accent transition-colors">Home</a>
+      <a href="#services" class="mobile-link text-2xl font-display font-bold text-white uppercase tracking-widest hover:text-accent transition-colors">Services</a>
+      <a href="#about" class="mobile-link text-2xl font-display font-bold text-white uppercase tracking-widest hover:text-accent transition-colors">About Us</a>
+      <a href="#contact" class="mobile-link text-2xl font-display font-bold text-white uppercase tracking-widest hover:text-accent transition-colors">Contact Us</a>
+  </div>
 
   <!-- Brutalist / WebGL Style Hero Section -->
   <section id="hero" class="relative z-10 min-h-[95vh] flex flex-col justify-center px-6 md:px-12 pt-40 pb-24 overflow-hidden">
@@ -112,10 +125,13 @@
                       </p>
                   </div>
                   
-                  <div class="mt-12 flex gap-6 items-center hero-buttons opacity-0 translate-y-8">
-                      <a href="#services" class="hover-target px-8 py-4 bg-accent text-white font-bold rounded-full uppercase tracking-widest text-sm flex items-center gap-3 transition-transform hover:scale-105">
+                                    <div class="mt-12 flex flex-col sm:flex-row gap-6 items-start sm:items-center hero-buttons opacity-0 translate-y-8">
+                      <a href="#services" class="hover-target px-8 py-4 bg-accent text-white font-bold rounded-full uppercase tracking-widest text-sm flex items-center justify-center w-full sm:w-auto gap-3 transition-transform hover:scale-105">
                           Explore Services
                           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                      </a>
+                      <a href="#contact" class="hover-target px-8 py-4 bg-transparent border border-white text-white font-bold rounded-full uppercase tracking-widest text-sm flex items-center justify-center w-full sm:w-auto transition-colors hover:bg-white hover:text-black">
+                          Inquiry Portal
                       </a>
                   </div>
               </div>
@@ -342,7 +358,46 @@
   </footer>
 
   <!-- --------------------- SCRIPTS --------------------- -->
-  <!-- GSAP Core & ScrollTrigger -->
+      <!-- Mobile Menu Logic -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+          const mobileMenu = document.getElementById('mobile-menu');
+          const mobileLinks = document.querySelectorAll('.mobile-link');
+          if(mobileMenuBtn && mobileMenu) {
+              const spans = mobileMenuBtn.querySelectorAll('span');
+              let isMenuOpen = false;
+
+              function toggleMenu() {
+                  isMenuOpen = !isMenuOpen;
+                  if (isMenuOpen) {
+                      mobileMenu.classList.remove('translate-x-full');
+                      mobileMenu.classList.add('translate-x-0');
+                      spans[0].classList.add('translate-y-2', 'rotate-45');
+                      spans[1].classList.add('opacity-0');
+                      spans[2].classList.add('-translate-y-2', '-rotate-45');
+                      document.body.style.overflow = 'hidden';
+                  } else {
+                      mobileMenu.classList.remove('translate-x-0');
+                      mobileMenu.classList.add('translate-x-full');
+                      spans[0].classList.remove('translate-y-2', 'rotate-45');
+                      spans[1].classList.remove('opacity-0');
+                      spans[2].classList.remove('-translate-y-2', '-rotate-45');
+                      document.body.style.overflow = '';
+                  }
+              }
+
+              mobileMenuBtn.addEventListener('click', toggleMenu);
+              mobileLinks.forEach(link => {
+                  link.addEventListener('click', () => {
+                      if (isMenuOpen) toggleMenu();
+                  });
+              });
+          }
+      });
+    </script>
+    
+    <!-- GSAP Core & ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <!-- Lenis Smooth Scroll -->
@@ -427,4 +482,5 @@
   </script>
 </body>
 </html>
+
 
