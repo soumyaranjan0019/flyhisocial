@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html lang="en" x-data="{ dark: false }" :class="{'dark':dark}" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="FlyHi Social Logo-selection-5.png" type="image/x-icon">
+  <title>Artificial Intelligence Division | FLYHISOCIAL</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { colors: { accent: '#FF6B2B' } } } }
+  </script>
+</head>
+<body class="bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased min-h-screen flex flex-col justify-between">
+  <div id="tsparticles" class="fixed inset-0 z-0 pointer-events-none"></div>
+  <!-- PREMIUM BLACK HEADER -->
+  <header class="relative z-10 bg-black dark:bg-black border-b border-zinc-800 py-4 px-6 shadow-sm">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-3">
+        <!-- Stepped 5-Block Logo (4 White, Top-Right Accent) -->
+        <svg class="h-8 w-8 shrink-0" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="56" y="0" width="24" height="24" rx="2" fill="#EC3013"/>
+          <rect x="28" y="28" width="24" height="24" rx="2" fill="#FFFFFF"/>
+          <rect x="56" y="28" width="24" height="24" rx="2" fill="#FFFFFF"/>
+          <rect x="0" y="56" width="24" height="24" rx="2" fill="#FFFFFF"/>
+          <rect x="28" y="56" width="24" height="24" rx="2" fill="#FFFFFF"/>
+        </svg>
+        <div class="flex flex-col justify-center leading-none">
+          <span class="font-display font-bold text-2xl tracking-tight text-white">FLYHi</span>
+          <span class="text-[9px] font-bold uppercase tracking-[0.3em] text-zinc-300 mt-0.5">SOCIAL</span>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="relative z-10 w-full h-[60vh] md:h-[70vh] flex items-end overflow-hidden">
+      <div class="absolute inset-0">
+          <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1920&q=80" alt="Artificial Intelligence Background" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent"></div>
+      </div>
+      <div class="relative z-10 max-w-6xl mx-auto px-6 pb-16 w-full">
+          <h1 class="text-4xl md:text-6xl font-display font-bold text-white mb-4 tracking-tight leading-tight">Artificial Intelligence</h1>
+          <p class="text-lg md:text-xl text-zinc-300 font-light max-w-2xl leading-relaxed">Next-generation AI solutions powering intelligent automation, predictive analytics, and product innovation.</p>
+      </div>
+  </section>
+      <!-- Case Study Hero -->
+    <section class="relative pt-40 pb-32 overflow-hidden bg-[#050505]">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965&auto=format&fit=crop" alt="Case Study Background" class="w-full h-full object-cover opacity-30 mix-blend-luminosity">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent"></div>
+        </div>
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-accent/20 text-accent font-bold uppercase tracking-widest text-xs mb-6 border border-accent/30">Artificial Intelligence</span>
+            <h1 class="text-4xl md:text-6xl font-display font-bold text-white tracking-tight leading-tight mb-6">AI-Powered Quality Control for Automotive OEM</h1>
+            <p class="text-xl text-zinc-400 font-light max-w-3xl mx-auto leading-relaxed">Precision is non-negotiable in automotive manufacturing. When human limitations bottleneck production quality, applied AI becomes the critical differentiator.</p>
+        </div>
+    </section>
+
+    <!-- Case Study Main Content -->
+    <main class="relative z-10 max-w-5xl mx-auto px-6 py-20 w-full bg-white dark:bg-zinc-950 -mt-10 rounded-t-3xl border-t border-x border-zinc-200 dark:border-zinc-800 shadow-2xl">
+        
+        <div class="grid md:grid-cols-3 gap-12 mb-20">
+            <div class="md:col-span-2 space-y-12">
+                <section>
+                    <h2 class="text-2xl font-display font-bold text-zinc-900 dark:text-white mb-6 flex items-center gap-4">
+                        <span class="w-10 h-10 rounded-full bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center text-accent font-mono text-sm">01</span>
+                        The Challenge
+                    </h2>
+                    <p class="text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed">The client relied on manual visual inspection for over 50,000 components daily. Human fatigue led to a 4% defect miss rate, resulting in costly product recalls, warranty claims, and strained relationships with major automotive brands.</p>
+                </section>
+                
+                <section>
+                    <h2 class="text-2xl font-display font-bold text-zinc-900 dark:text-white mb-6 flex items-center gap-4">
+                        <span class="w-10 h-10 rounded-full bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center text-accent font-mono text-sm">02</span>
+                        Our Solution
+                    </h2>
+                    <p class="text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed">We designed and deployed an advanced computer vision pipeline. Using custom-trained deep learning models deployed on high-performance edge computing devices, we enabled real-time, sub-millisecond defect detection directly integrated with the production line's SCADA system.</p>
+                </section>
+                
+                <section>
+                    <h2 class="text-2xl font-display font-bold text-zinc-900 dark:text-white mb-6 flex items-center gap-4">
+                        <span class="w-10 h-10 rounded-full bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center text-accent font-mono text-sm">03</span>
+                        The Approach
+                    </h2>
+                    <p class="text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed">We started with a robust data engineering phase, capturing and annotating thousands of defect variations to train our neural networks. We utilized transfer learning to accelerate model accuracy and implemented a continuous learning loop where flagged edge-cases automatically retrained the model.</p>
+                </section>
+            </div>
+            
+            <div class="space-y-8">
+                <div class="bg-zinc-50 dark:bg-[#0a0a0a] p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800">
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-zinc-900 dark:text-white mb-6">Client Snapshot</h3>
+                    <p class="text-zinc-600 dark:text-zinc-400 font-medium mb-4">Tier-1 Automotive Parts Manufacturer</p>
+                    <div class="h-[1px] w-full bg-zinc-200 dark:bg-zinc-800 mb-4"></div>
+                    <p class="text-sm text-zinc-500">Industry: <strong>Artificial Intelligence</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Impact Metrics -->
+        <div class="bg-black rounded-3xl p-10 md:p-16 border border-zinc-800 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-accent/20 rounded-full blur-[120px] pointer-events-none"></div>
+            <h2 class="text-3xl font-display font-bold text-white mb-12 text-center relative z-10">Business Impact</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 relative z-10">
+                <div class="text-center">
+                    <p class="text-4xl md:text-5xl font-display font-light text-white mb-3">99.7%</p>
+                    <p class="text-xs text-zinc-400 uppercase tracking-widest font-semibold">Detection Accuracy</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-4xl md:text-5xl font-display font-light text-white mb-3">500%</p>
+                    <p class="text-xs text-zinc-400 uppercase tracking-widest font-semibold">Throughput Increase</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-4xl md:text-5xl font-display font-light text-white mb-3">6mo</p>
+                    <p class="text-xs text-zinc-400 uppercase tracking-widest font-semibold">Full ROI Timeline</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-4xl md:text-5xl font-display font-light text-white mb-3">50K+</p>
+                    <p class="text-xs text-zinc-400 uppercase tracking-widest font-semibold">Daily Inspections</p>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+<footer class="relative z-10 bg-[#050505] pt-32 pb-12 overflow-hidden border-t border-white/5">
+      <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 mb-24">
+        
+        <!-- Column 1: Brand & Desc -->
+        <div class="md:col-span-4">
+          <a href="index.html" class="flex items-center gap-3 mb-8 select-none hover-target group inline-flex">
+            <svg class="h-10 w-auto hover:scale-105 transition-transform duration-300" viewBox="0 0 240 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="56" y="0" width="24" height="24" fill="#E52D12"/>
+  <rect x="28" y="28" width="24" height="24" fill="#FFFFFF"/>
+  <rect x="56" y="28" width="24" height="24" fill="#FFFFFF"/>
+  <rect x="0" y="56" width="24" height="24" fill="#FFFFFF"/>
+  <rect x="28" y="56" width="24" height="24" fill="#FFFFFF"/>
+  <text x="94" y="34" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="38" letter-spacing="-0.02em">FLYHi</text>
+  <text x="94" y="76" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="24" letter-spacing="0.1em">SOCIAL</text>
+</svg>
+          </a>
+          <p class="text-base text-zinc-400 leading-relaxed font-light pr-4 max-w-sm">
+            System implementation specialists accelerating enterprise business solutions.
+          </p>
+        </div>
+        
+        <!-- Column 2: Services -->
+        <div class="md:col-span-3">
+          <h2 class="text-white font-display font-bold mb-8 text-sm uppercase tracking-widest">Services</h2>
+          <ul class="space-y-4 text-sm font-light text-zinc-400">
+            <li><a href="cloud-computing.html" class="hover-target hover:text-white transition-colors block">Cloud Computing & AI</a></li>
+            <li><a href="erp-consulting.html" class="hover-target hover:text-white transition-colors block">ERP Solutions</a></li>
+            <li><a href="app-web-development.html" class="hover-target hover:text-white transition-colors block">App & Web-development</a></li>
+            <li><a href="digital-marketing.html" class="hover-target hover:text-white transition-colors block">Digital-Marketing</a></li>
+            <li><a href="event-management.html" class="hover-target hover:text-white transition-colors block">Event Management</a></li>
+            <li><a href="marine-consultancy.html" class="hover-target hover:text-white transition-colors block">Marine Consultancy</a></li>
+          </ul>
+        </div>
+        
+        <!-- Column 3: Company -->
+        <div class="md:col-span-2">
+          <h2 class="text-white font-display font-bold mb-8 text-sm uppercase tracking-widest">Company</h2>
+          <ul class="space-y-4 text-sm font-light text-zinc-400">
+            <li><a href="index.html" class="hover-target hover:text-white transition-colors block">Corporate Home</a></li>
+            <li><a href="index.html#about" class="hover-target hover:text-white transition-colors block">About Us</a></li>
+            <li><a href="index.html#contact" class="hover-target hover:text-white transition-colors block">Contact Us</a></li>
+          </ul>
+        </div>
+        
+                <!-- Column 4: Address -->
+        <div class="md:col-span-3">
+          <h2 class="text-white font-display font-bold mb-8 text-sm uppercase tracking-widest">Address</h2>
+          <p class="text-sm text-zinc-400 leading-relaxed font-light">
+            Plot No. 4775/2, BJB Nagar,<br>Bhubaneswar, Odisha 751014
+          </p>
+        </div>
+      </div>
+      
+      <!-- Copyright / Bottom Bar -->
+      <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pt-8 border-t border-white/10 flex justify-center text-sm text-zinc-500 font-light tracking-wide">
+        <p>&copy; 2026 FLYHISOCIAL. All rights reserved.</p>
+      </div>
+  </footer>
+ <!-- IMMERSIVE ADDITIONS -->
+<style>
+  html.lenis { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+  .lenis.lenis-stopped { overflow: hidden; }
+  .lenis.lenis-scrolling iframe { pointer-events: none; }
+  .reveal { visibility: hidden; }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      direction: 'vertical',
+      gestureDirection: 'vertical',
+      smooth: true,
+    });
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    gsap.registerPlugin(ScrollTrigger);
+    document.querySelectorAll('.bg-white.dark\\:bg-zinc-900').forEach(el => el.classList.add('reveal'));
+    gsap.utils.toArray('.reveal').forEach(elem => {
+      gsap.fromTo(elem, 
+              { autoAlpha: 0, y: 15 }, 
+              { autoAlpha: 1, y: 0, duration: 0.8, ease: "sine.out", scrollTrigger: { trigger: elem, start: "top 92%" } }
+            );
+    });
+
+    if(document.getElementById('tsparticles')) {
+      tsParticles.load("tsparticles", {
+        fpsLimit: 60,
+        interactivity: {
+          detectsOn: "window",
+          events: { 
+            onHover: { 
+              enable: true, 
+              mode: "parallax",
+              parallax: { enable: true, force: 200, smooth: 3 }
+            }, 
+            resize: true 
+          }
+        },
+        particles: {
+          color: { value: ["#ef4444", "#d946ef", "#8b5cf6", "#3b82f6", "#06b6d4"] },
+          links: { enable: false },
+          move: { enable: true, speed: 0.3, direction: "none", random: false, straight: false, outModes: "out" },
+          number: { density: { enable: true, area: 1000 }, value: 200 },
+          opacity: { value: { min: 0.5, max: 1 } },
+          size: { value: { min: 1.5, max: 3 } }
+        },
+        detectRetina: true,
+        fullScreen: { enable: false, zIndex: 0 }
+      });
+    }
+
+    
+  });
+</script>
+<!-- /IMMERSIVE ADDITIONS -->
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
