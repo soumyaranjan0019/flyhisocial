@@ -270,12 +270,16 @@
           typeSpeed: 50,
           showCursor: true,
           cursorChar: '|',
-          loop: false
+          loop: false,
+          onComplete: (self) => {
+            document.querySelectorAll('.typed-cursor').forEach(c => c.style.display = 'none');
+          }
         });
       }
     });
 </script>
 </body>
 </html>
+
 
 
