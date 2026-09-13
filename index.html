@@ -636,25 +636,54 @@
         fullScreen: { enable: false, zIndex: 0 }
       });
   </script>
+        <style>
+    .slide-word {
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .slide-word-out {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    .slide-word-in {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    .slide-word-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    </style>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const words = ["Technology Partners.", "Digital Innovators.", "Growth Catalysts."];
             let i = 0;
             const wordEl = document.getElementById("hero-word");
             if(wordEl) {
+                wordEl.className = "text-accent inline-block slide-word slide-word-visible";
                 setInterval(() => {
-                    wordEl.style.opacity = 0;
+                    wordEl.classList.remove("slide-word-visible");
+                    wordEl.classList.add("slide-word-out");
+                    
                     setTimeout(() => {
-                        i = (i + 1) % words.length;
-                        wordEl.textContent = words[i];
-                        wordEl.style.opacity = 1;
+                        wordEl.style.transition = "none";
+                        wordEl.classList.remove("slide-word-out");
+                        wordEl.classList.add("slide-word-in");
+                        wordEl.textContent = words[(i + 1) % words.length];
+                        
+                        setTimeout(() => {
+                            wordEl.style.transition = "";
+                            wordEl.classList.remove("slide-word-in");
+                            wordEl.classList.add("slide-word-visible");
+                            i = (i + 1) % words.length;
+                        }, 50);
                     }, 500);
-                }, 4000);
+                }, 3500);
             }
         });
     </script>
 </body>
 </html>
+
 
 
 
