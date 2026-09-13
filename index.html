@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
@@ -49,6 +49,19 @@
       transform: translateY(-8px);
     }
   </style>
+
+<style>
+  .vertical-slider {
+      animation: slide-up 10s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  }
+  @keyframes slide-up {
+      0%, 20% { transform: translateY(0); }
+      25%, 45% { transform: translateY(-20%); }
+      50%, 70% { transform: translateY(-40%); }
+      75%, 95% { transform: translateY(-60%); }
+      100% { transform: translateY(-80%); }
+  }
+</style>
 </head>
 <body class="antialiased font-sans">
   
@@ -486,6 +499,7 @@
   </script>
 </body>
 </html>
+
 
 
 
