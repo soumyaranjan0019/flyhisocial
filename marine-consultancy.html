@@ -9,8 +9,6 @@
   <script>
     tailwind.config = { darkMode: 'class', theme: { extend: { colors: { accent: '#FF6B2B' } } } }
   </script>
-<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-<style>.typed-cursor{font-weight:300;}</style>
 </head>
 <body class="bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased min-h-screen flex flex-col justify-between">
   <div id="tsparticles" class="fixed inset-0 z-0 pointer-events-none"></div>
@@ -45,7 +43,6 @@
 
 
   <main class="relative z-10 max-w-6xl mx-auto px-6 py-16 flex-grow w-full">
-    <h1 class="text-4xl font-extrabold text-zinc-900 dark:text-white mb-6 tracking-tight"><span class="typed-text"></span></h1>
     <div class="bg-white dark:bg-zinc-900 p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm space-y-4 mb-16">
       <p class="text-zinc-600 dark:text-zinc-300 leading-relaxed text-base">
         Our maritime advisory desk delivers specialized solutions across global shipping, vessel operations, and offshore logistics. We guide shipowners, charterers, and operators with end-to-end technical expertise, risk evaluations, and modern compliance frameworks.
@@ -303,24 +300,10 @@
   });
 </script>
 <!-- /IMMERSIVE ADDITIONS -->
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-      if(typeof Typed !== 'undefined' && document.querySelector('.typed-text')) {
-        new Typed('.typed-text', {
-          strings: ["Marine Consultancy."],
-          typeSpeed: 50,
-          showCursor: true,
-          cursorChar: '|',
-          loop: false,
-          onComplete: (self) => {
-            document.querySelectorAll('.typed-cursor').forEach(c => c.style.display = 'none');
-          }
-        });
-      }
-    });
-</script>
+
 </body>
 </html>
+
 
 
 

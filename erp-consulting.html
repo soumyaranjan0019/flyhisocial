@@ -28,8 +28,6 @@
       }
     }
   </style>
-<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-<style>.typed-cursor{font-weight:300;}</style>
 </head>
 <body class="bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased min-h-screen flex flex-col justify-between">
   <div id="tsparticles" class="fixed inset-0 z-0 pointer-events-none"></div>
@@ -63,7 +61,6 @@
   </section>
 
   <main class="relative z-10 max-w-6xl mx-auto px-6 py-16 flex-grow w-full">
-    <h1 class="text-4xl font-extrabold text-zinc-900 dark:text-white mb-6 tracking-tight"><span class="typed-text"></span></h1>
     <div class="bg-white dark:bg-zinc-900 p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm space-y-6 mb-16">
       <p class="text-zinc-600 dark:text-zinc-300 leading-relaxed">
         Our enterprise architecture division designs, implements, and optimizes the world's leading Enterprise Resource Planning ecosystems to power high-throughput, modern business operations. We provide comprehensive core functional alignment across the entire ERP spectrum specializing in full-cycle SAP S/4HANA migrations, Oracle Cloud ERP integrations and legacy Oracle JD Edwards physical asset modernizations. By engineering custom business logic modules, optimizing multi-currency supply chain matrices, and consolidating cross-department workflows, we transform fragmented corporate networks into unified, automated single points of truth. 
@@ -307,24 +304,10 @@
   });
 </script>
 <!-- /IMMERSIVE ADDITIONS -->
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-      if(typeof Typed !== 'undefined' && document.querySelector('.typed-text')) {
-        new Typed('.typed-text', {
-          strings: ["ERP Solutions."],
-          typeSpeed: 50,
-          showCursor: true,
-          cursorChar: '|',
-          loop: false,
-          onComplete: (self) => {
-            document.querySelectorAll('.typed-cursor').forEach(c => c.style.display = 'none');
-          }
-        });
-      }
-    });
-</script>
+
 </body>
 </html>
+
 
 
 
