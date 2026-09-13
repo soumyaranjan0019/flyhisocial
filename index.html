@@ -48,7 +48,18 @@
       border: 1px solid rgba(255, 107, 43, 0.4);
       transform: translateY(-8px);
     }
-  </style>
+    .client-slider-track {
+      width: max-content;
+      animation: marquee 30s linear infinite;
+  }
+  .client-slider-track:hover {
+      animation-play-state: paused;
+  }
+  @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+  }
+</style>
 
 <style>
     @keyframes fade-slide {
@@ -64,6 +75,17 @@
       50%, 70% { transform: translateY(-40%); }
       75%, 95% { transform: translateY(-60%); }
       100% { transform: translateY(-80%); }
+  }
+  .client-slider-track {
+      width: max-content;
+      animation: marquee 30s linear infinite;
+  }
+  .client-slider-track:hover {
+      animation-play-state: paused;
+  }
+  @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
   }
 </style>
 </head>
@@ -328,6 +350,58 @@
     </div>
   </section>
 
+    <!-- Our Clients Section -->
+  <section id="clients" class="relative z-10 py-24 px-6 md:px-12 w-full bg-[#050505]">
+      <div class="max-w-7xl mx-auto mb-16 text-center">
+          <h2 class="text-3xl md:text-5xl font-display font-bold text-white mb-6 uppercase tracking-widest reveal-fade">Our Clients</h2>
+          <div class="w-24 h-1 bg-accent mx-auto mb-8 reveal-fade"></div>
+          <p class="text-zinc-400 font-light max-w-2xl mx-auto reveal-fade">Trusted by forward-thinking enterprises worldwide to deliver mission-critical solutions.</p>
+      </div>
+      
+      <div class="client-slider relative max-w-7xl mx-auto overflow-hidden reveal-fade before:absolute before:left-0 before:top-0 before:z-10 before:w-32 before:h-full before:bg-gradient-to-r before:from-[#050505] before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:w-32 after:h-full after:bg-gradient-to-l after:from-[#050505] after:to-transparent">
+          <div class="client-slider-track flex items-center gap-16 pr-16">
+              <!-- Group 1 -->
+              <div class="flex items-center justify-center min-w-[200px] h-20 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer">
+                  <span class="text-3xl font-bold font-display text-white tracking-widest">NEXUS</span>
+              </div>
+              <div class="flex items-center justify-center min-w-[200px] h-20 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer">
+                  <span class="text-3xl font-bold font-display text-white tracking-widest">QUANTUM</span>
+              </div>
+              <div class="flex items-center justify-center min-w-[200px] h-20 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer">
+                  <span class="text-3xl font-bold font-display text-white tracking-widest">AETHER</span>
+              </div>
+              <div class="flex items-center justify-center min-w-[200px] h-20 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer">
+                  <span class="text-3xl font-bold font-display text-white tracking-widest">VERTEX</span>
+              </div>
+              <div class="flex items-center justify-center min-w-[200px] h-20 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer">
+                  <span class="text-3xl font-bold font-display text-white tracking-widest">LUMINA</span>
+              </div>
+              <div class="flex items-center justify-center min-w-[200px] h-20 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer">
+                  <span class="text-3xl font-bold font-display text-white tracking-widest">SYNAPSE</span>
+              </div>
+              <!-- Duplicate Group 1 for seamless looping -->
+              <div class="flex items-center justify-center min-w-[200px] h-20 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer">
+                  <span class="text-3xl font-bold font-display text-white tracking-widest">NEXUS</span>
+              </div>
+              <div class="flex items-center justify-center min-w-[200px] h-20 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer">
+                  <span class="text-3xl font-bold font-display text-white tracking-widest">QUANTUM</span>
+              </div>
+              <div class="flex items-center justify-center min-w-[200px] h-20 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer">
+                  <span class="text-3xl font-bold font-display text-white tracking-widest">AETHER</span>
+              </div>
+              <div class="flex items-center justify-center min-w-[200px] h-20 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer">
+                  <span class="text-3xl font-bold font-display text-white tracking-widest">VERTEX</span>
+              </div>
+              <div class="flex items-center justify-center min-w-[200px] h-20 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer">
+                  <span class="text-3xl font-bold font-display text-white tracking-widest">LUMINA</span>
+              </div>
+              <div class="flex items-center justify-center min-w-[200px] h-20 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer">
+                  <span class="text-3xl font-bold font-display text-white tracking-widest">SYNAPSE</span>
+              </div>
+          </div>
+      </div>
+  </section>
+
   <!-- Premium Rebuilt Footer -->
   <footer class="relative z-10 bg-[#050505] pt-32 pb-12 overflow-hidden border-t border-white/5">
       <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 mb-24">
@@ -503,6 +577,7 @@
   </script>
 </body>
 </html>
+
 
 
 
