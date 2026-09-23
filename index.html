@@ -317,7 +317,7 @@
       </div>
       
       <div class="lg:col-span-7 w-full reveal-fade">
-        <form action="https://formsubmit.co/flyhisocials@gmail.com" method="POST" class="space-y-6">
+        <form id="contact-form" action="https://formsubmit.co/flyhisocials@gmail.com" method="POST" class="space-y-6">
             <input type="hidden" name="_subject" value="New Form Submission on FLYHI SOCIAL">
             <input type="hidden" name="_captcha" value="false">
           
@@ -679,8 +679,39 @@
             }
         });
     </script>
+    <script>
+        const contactForm = document.getElementById('contact-form');
+        if(contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerText;
+                submitBtn.innerText = 'Sending...';
+                submitBtn.disabled = true;
+
+                fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: { 'Accept': 'application/json' }
+                }).then(response => {
+                    if (response.ok) {
+                        alert("Thank you! Your message has been sent successfully to the FLYHISOCIAL team.");
+                        contactForm.reset();
+                    } else {
+                        alert("Oops! There was a problem submitting your form.");
+                    }
+                }).catch(error => {
+                    alert("Oops! There was a problem submitting your form.");
+                }).finally(() => {
+                    submitBtn.innerText = originalText;
+                    submitBtn.disabled = false;
+                });
+            });
+        }
+    </script>
 </body>
 </html>
+
 
 
 
